@@ -15,6 +15,20 @@
             ]
         }
     ],
+    "persistence":[
+        {
+            "image": "/ISO/linuxmint-22.1-cinnamon-64bit.iso",
+            "backend":[
+                "/ventoy/mint_persistence.dat"
+            ]
+        },
+        {
+            "image": "/ISO/kali-linux-2025.1c-live-amd64.iso",
+            "backend":[
+                "/ventoy/kali_persistence.dat"
+            ]
+        }
+    ],
     "VTOY_DEFAULT_MENU_MODE": "1",
     "VTOY_BOOT_MENU_TITLE": "My Custom USB"
 }
