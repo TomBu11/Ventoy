@@ -19,7 +19,7 @@
     ],
     "persistence":[
         {
-            "image": "/ISO/linuxmint-22.1-cinnamon-64bit.iso",
+            "image": "/ISO/linuxmint-22-cinnamon-64bit.iso",
             "backend":[
                 "/ventoy/mint_persistence.dat"
             ]
