@@ -1,3 +1,4 @@
-ISO/
-System Volume Information/
-*.dat
+/*
+!.gitignore
+!script/
+!ventoy.json
