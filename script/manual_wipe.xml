@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-GB&Keyboard=00000809&GeoLocation=242&ProcessorArchitecture=amd64&BypassRequirementsCheck=true&BypassNetworkCheck=true&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Explicit&TimeZone=GMT+Standard+Time&PartitionMode=Interactive&WindowsEditionMode=Firmware&UserAccountMode=Unattended&AccountName0=Rocksalt&AccountDisplayName0=&AccountPassword0=&AccountGroup0=Administrators&AccountName1=&AccountName2=&AccountName3=&AccountName4=&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Custom&LockoutThreshold=10&LockoutWindow=5&LockoutDuration=30&HideFiles=Hidden&ShowFileExtensions=true&TaskbarSearch=Box&TaskbarIconsMode=Custom&TaskbarIconsXml=%3CLayoutModificationTemplate+xmlns%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FLayoutModification%22+xmlns%3Adefaultlayout%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FFullDefaultLayout%22+xmlns%3Astart%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FStartLayout%22+xmlns%3Ataskbar%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FTaskbarLayout%22+Version%3D%221%22%3E%0D%0A++%3CCustomTaskbarLayoutCollection+PinListPlacement%3D%22Replace%22%3E%0D%0A++++%3Cdefaultlayout%3ATaskbarLayout%3E%0D%0A++++++%3Ctaskbar%3ATaskbarPinList%3E%0D%0A++++++++%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Microsoft.Windows.Explorer%22+%2F%3E%0D%0A++++++++%3Ctaskbar%3AUWA+AppUserModelID%3D%22windows.immersivecontrolpanel_cw5n1h2txyewy%21microsoft.windows.immersivecontrolpanel%22+%2F%3E%0D%0A++++++%3C%2Ftaskbar%3ATaskbarPinList%3E%0D%0A++++%3C%2Fdefaultlayout%3ATaskbarLayout%3E%0D%0A++%3C%2FCustomTaskbarLayoutCollection%3E%0D%0A%3C%2FLayoutModificationTemplate%3E&DisableWidgets=true&HideTaskViewButton=true&ShowAllTrayIcons=true&DisableBingResults=true&StartTilesMode=Default&StartPinsMode=Custom&StartPinsJson=%7B%22pinnedList%22%3A%5B%0D%0A++%7B%22desktopAppLink%22%3A%22%25APPDATA%25%5C%5CMicrosoft%5C%5CWindows%5C%5CStart+Menu%5C%5CPrograms%5C%5CFile+Explorer.lnk%22%7D%2C%0D%0A++%7B%22desktopAppLink%22%3A%22%25ALLUSERSPROFILE%25%5C%5CMicrosoft%5C%5CWindows%5C%5CStart+Menu%5C%5CPrograms%5C%5CGoogle+Chrome.lnk%22%7D%2C%0D%0A++%7B%22packagedAppId%22%3A%22Microsoft.OutlookforWindows_8wekyb3d8bbwe%21Microsoft.OutlookforWindows%22%7D%2C%0D%0A++%7B%22packagedAppId%22%3A%22windows.immersivecontrolpanel_cw5n1h2txyewy%21microsoft.windows.immersivecontrolpanel%22%7D%2C%0D%0A++%7B%22packagedAppId%22%3A%22Microsoft.WindowsNotepad_8wekyb3d8bbwe%21App%22%7D%2C%0D%0A%7B%22packagedAppId%22%3A%22Microsoft.ScreenSketch_8wekyb3d8bbwe%21App%22%7D%5D%7D&AllowPowerShellScripts=true&EffectsMode=Default&DesktopIconsMode=Default&WifiMode=Skip&ExpressSettings=DisableAll&KeysMode=Skip&ColorMode=Default&WallpaperMode=Default&RemoveCopilot=true&RemoveCortana=true&FirstLogonScript0=%24rootDirectory+%3D+%22C%3A%5CRocksalt%22%0D%0A%0D%0A%23+Install+TeamViewer+silently%0D%0AStart-Process+%28Join-Path+-Path+%24rootDirectory+-ChildPath+%22TeamViewer_Host_Setup.exe%22%29+-ArgumentList+%22%2FS%22%2C+%22%2FACCEPTEULA%3D1%22+-WindowStyle+Hidden+-Wait%0D%0A%0D%0A%23+Ensure+Chocolatey+is+installed%0D%0Aif+%28-not+%28Get-Command+choco+-ErrorAction+SilentlyContinue%29%29+%7B%0D%0A++Write-Host+%22Chocolatey+is+not+installed.+Installing+now...%22+-ForegroundColor+Yellow%0D%0A++Set-ExecutionPolicy+Bypass+-Scope+Process+-Force%0D%0A++%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+%3D+%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+-bor+3072%0D%0A++Invoke-Expression+%28%28New-Object+System.Net.WebClient%29.DownloadString%28%27https%3A%2F%2Fcommunity.chocolatey.org%2Finstall.ps1%27%29%29%0D%0A++Write-Host+%22Chocolatey+installed+successfully.%22+-ForegroundColor+Green%0D%0A%7D%0D%0A%0D%0A%23+Define+the+list+of+apps+to+install%2Fupdate%0D%0A%24apps+%3D+%40%28%22googlechrome%22%2C+%227zip%22%2C+%22notepadplusplus%22%2C+%22foxitreader%22%29%0D%0A%0D%0A%23+Install+or+update+each+app%0D%0Aforeach+%28%24app+in+%24apps%29+%7B%0D%0A++Write-Host+%22Installing%2Fupdating+%24app...%22+-ForegroundColor+Cyan%0D%0A++choco+install+%24app+-y+%2D%2Dforce%0D%0A%7D%0D%0A%0D%0A%23+Install+all+apps+in+the+Installers+folder%0D%0A%24exeDirectory+%3D+Join-Path+-Path+%24rootDirectory+-ChildPath+%22Installers%22%0D%0A%24exeFiles+%3D+Get-ChildItem+-Path+%24exeDirectory+-Filter+%22*.exe%22%0D%0A%0D%0Aforeach+%28%24exe+in+%24exeFiles%29+%7B%0D%0A++Write-Host+%22Installing%3A+%24%28%24exe.Name%29%22%0D%0A++Start-Process+-FilePath+%24exe.FullName+-ArgumentList+%22%2FS%22%2C+%22%2Fquiet%22%2C+%22%2Fnorestart%22+-NoNewWindow+-Wait%0D%0A%7D%0D%0A&FirstLogonScriptType0=Ps1&FirstLogonScript1=%24newPassword+%3D+Read-Host+%22Enter+new+password+for+Local+Rocksalt+account%22+-AsSecureString%0D%0A%0D%0ASet-LocalUser+-Name+%22Rocksalt%22+-Password+%24newPassword&FirstLogonScriptType1=Ps1&FirstLogonScript2=%23+Define+output+file+path%0D%0A%24outputDirectory+%3D+%22C%3A%5CRocksalt%22%0D%0A%24outputFile+%3D+%22%24outputDirectory%5CAudit.txt%22%0D%0A%0D%0ANew-Item+-ItemType+Directory+-Path+%24outputDirectory%0D%0AWrite-Host+%22Directory+created%3A+%24outputDirectory%22%0D%0A%0D%0A%24memoryType+%3D+%40%7B%0D%0A++21+%3D+%22DDR+2%22%0D%0A++24+%3D+%22DDR+3%22%0D%0A++26+%3D+%22DDR+4%22%0D%0A%7D%0D%0A%0D%0A%23+Set+Brute+Force+rules%0D%0AWrite-Host+%22Running+brute+force+commands%22%0D%0Anet+accounts+%2Flockoutthreshold%3A10%0D%0Anet+accounts+%2Flockoutwindow%3A5%0D%0Anet+accounts+%2Flockoutduration%3A30%0D%0A%0D%0A%23+Get+audit+information%0D%0A%24auditer+%3D+Read-Host+%22RS+%28initials%29%22%0D%0A%24date+%3D+Get-Date+-Format+%22yyyy-MM-dd%22%0D%0A%24done+%3D+%22Part%22%0D%0A%24users+%3D+Read-Host+%22Users%22%0D%0A%24gi+%3D+Read-Host+%22GI+%28numbers%29%22%0D%0A%24pcName+%3D+%24env%3ACOMPUTERNAME%0D%0A%24manufacturer+%3D+%28Get-WmiObject+-Class+Win32_ComputerSystem%29.Manufacturer%0D%0A%24model+%3D+%28Get-WmiObject+-Class+Win32_ComputerSystem%29.Model%0D%0A%24type+%3D+if+%28%28Get-WmiObject+-Class+Win32_ComputerSystem%29.PCSystemType+-eq+2%29+%7B%0D%0A++%22Laptop%22%0D%0A%7D+else+%7B%0D%0A++%22Desktop%22%0D%0A%7D%0D%0A%24serialNumber+%3D+%28Get-WmiObject+-Class+Win32_BIOS%29.SerialNumber%0D%0A%24os+%3D+%28Get-WmiObject+-Class+Win32_OperatingSystem%29.Caption%0D%0A%24win11Comp+%3D+if+%28%24os+-match+%2211%22%29+%7B+%22Yes%22+%7D+else+%7B+%22No%22+%7D%0D%0A%24updates+%3D+if+%28%28Read-Host+%22Updates+%28y%2FN%29%22%29+-eq+%22y%22%29+%7B+%22Yes%22+%7D+else+%7B+%22No%22+%7D%0D%0A%24drivers+%3D+if+%28%28Read-Host+%22Drivers+%28y%2FN%29%22%29+-eq+%22y%22%29+%7B+%22Yes%22+%7D+else+%7B+%22No%22+%7D%0D%0A%24antiVirus+%3D+if+%28%28Read-Host+%22Antivirus+%28y%2FN%29%22%29+-eq+%22y%22%29+%7B+%22Yes%22+%7D+else+%7B+%22No%22+%7D%0D%0A%24rocksaltExists+%3D+%22Yes%22%0D%0A%24clientAdmin+%3D+Read-Host+%22Client+Admin%22%0D%0A%24domainName+%3D+%28Get-WmiObject+-Class+Win32_ComputerSystem%29.Domain%0D%0A%24createUser+%3D+Read-Host+%22Create+standard+user%3F+%28Y%2Fn%29%22%0D%0Aif+%28%24createUser+-eq+%22Y%22+-or+%24createUser+-eq+%22%22%29+%7B%0D%0A++++%23+Prompt+for+the+username+and+password%0D%0A++++%24username+%3D+Read-Host+%22Username%3A%22%0D%0A++++%24password+%3D+Read-Host+%22Password%3A%22+-AsSecureString%0D%0A%0D%0A++++%23+Create+the+new+user%0D%0A++++New-LocalUser+-Name+%24username+-Password+%24password+-FullName+%24username%0D%0A%7D%0D%0A%24processor+%3D+%28Get-WmiObject+-Class+Win32_Processor%29.Name%0D%0A%24ram+%3D+%28Get-CimInstance+-ClassName+Win32_PhysicalMemory+%7C+Measure-Object+-Property+Capacity+-Sum%29.Sum+%2F+1GB%0D%0A%23+%24ramType+%3D+Get-CimInstance+-ClassName+Win32_PhysicalMemory+%7C+Select-Object+%40%7BName%3D%22MemoryType%22%3B+Expression%3D%7Bif+%28%24memoryType%5B%24_.MemoryType%5D%29+%7B%24memoryType%5B%24_.MemoryType%5D%7D+else+%7B%22-%22%7D%7D%7D%0D%0A%24diskSize+%3D+%5Bmath%5D%3A%3ARound%28%28Get-WmiObject+-Class+Win32_LogicalDisk+-Filter+%22DeviceID%3D%27C%3A%27%22%29.Size+%2F+1GB%29%0D%0A%24diskType+%3D+Get-PhysicalDisk+%7C+Select-Object+-ExpandProperty+MediaType%0D%0A%24bitlocker+%3D+Read-Host+%22Bitlocker%22%0D%0A%24teamviewer+%3D+Read-Host+%22Teamviewer+ID%22%0D%0A%24bruteForce+%3D+%22Yes%22%0D%0A%24notes+%3D+Read-Host+%22Notes%22%0D%0A%0D%0A%23+Prepare+tab-separated+line%0D%0A%24line+%3D+%22%24auditer%60t%24date%60t%24done%60t%24users%60tGI%24gi%60t%24pcName%60t%24manufacturer%60t%24model%60t%24type%60t%24serialNumber%60t%24os%60t%24win11Comp%60t%24updates%60t%24drivers%60t%24antiVirus%60t%24rocksaltExists%60t%24clientAdmin%60t%24userName%60t%24domainName%60t%24processor%60t%24ram%60t%24ramType%60t%24diskSize%60t%24diskType%60t%60t%60t%24bitlocker%60t%24teamviewer%60t%24bruteForce%60t%24notes%22%0D%0A%0D%0A%23+Append+to+the+output+file%0D%0A%24line+%7C+Out-File+-Append+-FilePath+%24outputFile%0D%0A%0D%0AWrite-Host+%22System+information+has+been+appended+to+%24outputFile%22%0D%0A%0D%0A%23+Wait+for+user+input+before+exiting%0D%0ARead-Host+-Prompt+%22Press+Enter+to+exit%22%0D%0A&FirstLogonScriptType2=Ps1&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-GB&Keyboard=00000809&GeoLocation=242&ProcessorArchitecture=x86&ProcessorArchitecture=amd64&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Explicit&TimeZone=GMT+Standard+Time&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&InstallFromMode=Automatic&UserAccountMode=Unattended&AccountName0=Rocksalt&AccountDisplayName0=&AccountPassword0=&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Custom&LockoutThreshold=10&LockoutWindow=5&LockoutDuration=30&HideFiles=Hidden&ShowFileExtensions=true&TaskbarSearch=Box&TaskbarIconsMode=Custom&TaskbarIconsXml=%3CLayoutModificationTemplate+xmlns%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FLayoutModification%22+xmlns%3Adefaultlayout%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FFullDefaultLayout%22+xmlns%3Astart%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FStartLayout%22+xmlns%3Ataskbar%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FTaskbarLayout%22+Version%3D%221%22%3E%0D%0A++%3CCustomTaskbarLayoutCollection+PinListPlacement%3D%22Replace%22%3E%0D%0A++++%3Cdefaultlayout%3ATaskbarLayout%3E%0D%0A++++++%3Ctaskbar%3ATaskbarPinList%3E%0D%0A++++++++%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Microsoft.Windows.Explorer%22+%2F%3E%0D%0A++++++++%3Ctaskbar%3AUWA+AppUserModelID%3D%22windows.immersivecontrolpanel_cw5n1h2txyewy%21microsoft.windows.immersivecontrolpanel%22+%2F%3E%0D%0A++++++%3C%2Ftaskbar%3ATaskbarPinList%3E%0D%0A++++%3C%2Fdefaultlayout%3ATaskbarLayout%3E%0D%0A++%3C%2FCustomTaskbarLayoutCollection%3E%0D%0A%3C%2FLayoutModificationTemplate%3E&DisableWidgets=true&HideTaskViewButton=true&StartTilesMode=Default&StartPinsMode=Custom&StartPinsJson=%7B%22pinnedList%22%3A%5B%0D%0A++%7B%22desktopAppLink%22%3A%22%25APPDATA%25%5C%5CMicrosoft%5C%5CWindows%5C%5CStart+Menu%5C%5CPrograms%5C%5CFile+Explorer.lnk%22%7D%2C%0D%0A++%7B%22desktopAppLink%22%3A%22%25ALLUSERSPROFILE%25%5C%5CMicrosoft%5C%5CWindows%5C%5CStart+Menu%5C%5CPrograms%5C%5CGoogle+Chrome.lnk%22%7D%2C%0D%0A++%7B%22packagedAppId%22%3A%22Microsoft.OutlookforWindows_8wekyb3d8bbwe%21Microsoft.OutlookforWindows%22%7D%2C%0D%0A++%7B%22packagedAppId%22%3A%22windows.immersivecontrolpanel_cw5n1h2txyewy%21microsoft.windows.immersivecontrolpanel%22%7D%2C%0D%0A++%7B%22packagedAppId%22%3A%22Microsoft.WindowsNotepad_8wekyb3d8bbwe%21App%22%7D%2C%0D%0A%7B%22packagedAppId%22%3A%22Microsoft.ScreenSketch_8wekyb3d8bbwe%21App%22%7D%5D%7D&EffectsMode=Default&DesktopIconsMode=Default&WifiMode=Skip&ExpressSettings=DisableAll&KeysMode=Skip&StickyKeysMode=Disabled&ColorMode=Default&WallpaperMode=Default&RemoveCopilot=true&RemoveCortana=true&FirstLogonScript0=%24rootDirectory+%3D+%22C%3A%5CRocksalt%22%0D%0A%0D%0A%23+Install+TeamViewer+silently%0D%0AStart-Process+%28Join-Path+-Path+%24rootDirectory+-ChildPath+%22TeamViewer_Host_Setup.exe%22%29+-ArgumentList+%22%2FS%22%2C+%22%2FACCEPTEULA%3D1%22+-WindowStyle+Hidden+-Wait%0D%0A%0D%0A%23+Ensure+Chocolatey+is+installed%0D%0Aif+%28-not+%28Get-Command+choco+-ErrorAction+SilentlyContinue%29%29+%7B%0D%0A++Write-Host+%22Chocolatey+is+not+installed.+Installing+now...%22+-ForegroundColor+Yellow%0D%0A++Set-ExecutionPolicy+Bypass+-Scope+Process+-Force%0D%0A++%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+%3D+%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+-bor+3072%0D%0A++Invoke-Expression+%28%28New-Object+System.Net.WebClient%29.DownloadString%28%27https%3A%2F%2Fcommunity.chocolatey.org%2Finstall.ps1%27%29%29%0D%0A++Write-Host+%22Chocolatey+installed+successfully.%22+-ForegroundColor+Green%0D%0A%7D%0D%0A%0D%0A%23+Define+the+list+of+apps+to+install%2Fupdate%0D%0A%24apps+%3D+%40%28%22googlechrome%22%2C+%227zip%22%2C+%22notepadplusplus%22%2C+%22foxitreader%22%29%0D%0A%0D%0A%23+Install+or+update+each+app%0D%0Aforeach+%28%24app+in+%24apps%29+%7B%0D%0A++Write-Host+%22Installing%2Fupdating+%24app...%22+-ForegroundColor+Cyan%0D%0A++choco+install+%24app+-y+%2D%2Dforce%0D%0A%7D%0D%0A%0D%0A%23+Install+all+apps+in+the+Installers+folder%0D%0A%24exeDirectory+%3D+Join-Path+-Path+%24rootDirectory+-ChildPath+%22Installers%22%0D%0A%24exeFiles+%3D+Get-ChildItem+-Path+%24exeDirectory+-Filter+%22*.exe%22%0D%0A%0D%0Aforeach+%28%24exe+in+%24exeFiles%29+%7B%0D%0A++Write-Host+%22Installing%3A+%24%28%24exe.Name%29%22%0D%0A++Start-Process+-FilePath+%24exe.FullName+-ArgumentList+%22%2FS%22%2C+%22%2Fquiet%22%2C+%22%2Fnorestart%22+-NoNewWindow+-Wait%0D%0A%7D%0D%0A&FirstLogonScriptType0=Ps1&FirstLogonScript1=%24newPassword+%3D+Read-Host+%22Enter+new+password+for+Local+Rocksalt+account%22+-AsSecureString%0D%0A%0D%0ASet-LocalUser+-Name+%22Rocksalt%22+-Password+%24newPassword&FirstLogonScriptType1=Ps1&FirstLogonScript2=%23Requires+-RunAsAdministrator%0D%0A%0D%0Aparam+%28%0D%0A++%5BValidateSet%28%22NORMAL%22%2C+%22UNATTEND%22%2C+%22USB%22%29%5D%0D%0A++%5Bstring%5D%24AuditMode+%3D+%22NORMAL%22%2C%0D%0A++%5Bstring%5D%24auditer+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24name+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24gi+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24updates+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24drivers+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24antiVirus+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24clientAdmin+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24userName+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24otherBrowsers+%3D+%22UNATTEND%22%2C%0D%0A++%5Bstring%5D%24softwareValid+%3D+%22UNATTEND%22%0D%0A%29%0D%0A%0D%0AWrite-Host+%22Audit+script+version+1.0.3%60n%22+-ForegroundColor+Green%0D%0A%0D%0A%24hardwareReadinessScript+%3D+%40%27%0D%0A%23%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0D%0A%23%0D%0A%23+Script+Name%3A+++++HardwareReadiness.ps1%0D%0A%23+Description%3A+++++Verifies+the+hardware+compliance.+Return+code+0+for+success.+%0D%0A%23++++++++++++++++++In+case+of+failure%2C+returns+non+zero+error+code+along+with+error+message.%0D%0A%0D%0A%23+This+script+is+not+supported+under+any+Microsoft+standard+support+program+or+service+and+is+distributed+under+the+MIT+license%0D%0A%0D%0A%23+Copyright+%28C%29+2021+Microsoft+Corporation%0D%0A%0D%0A%23+Permission+is+hereby+granted%2C+free+of+charge%2C+to+any+person+obtaining+a+copy+of+this+software+and+associated+documentation%0D%0A%23+files+%28the+%22Software%22%29%2C+to+deal+in+the+Software+without+restriction%2C+including+without+limitation+the+rights+to+use%2C+copy%2C%0D%0A%23+modify%2C+merge%2C+publish%2C+distribute%2C+sublicense%2C+and%2For+sell+copies+of+the+Software%2C+and+to+permit+persons+to+whom+the+Software%0D%0A%23+is+furnished+to+do+so%2C+subject+to+the+following+conditions%3A%0D%0A%0D%0A%23+The+above+copyright+notice+and+this+permission+notice+shall+be+included+in+all+copies+or+substantial+portions+of+the+Software.%0D%0A%0D%0A%23+THE+SOFTWARE+IS+PROVIDED+%22AS+IS%22%2C+WITHOUT+WARRANTY+OF+ANY+KIND%2C+EXPRESS+OR+IMPLIED%2C+INCLUDING+BUT+NOT+LIMITED+TO+THE%0D%0A%23+WARRANTIES+OF+MERCHANTABILITY%2C+FITNESS+FOR+A+PARTICULAR+PURPOSE+AND+NONINFRINGEMENT.+IN+NO+EVENT+SHALL+THE+AUTHORS+OR%0D%0A%23+COPYRIGHT+HOLDERS+BE+LIABLE+FOR+ANY+CLAIM%2C+DAMAGES+OR+OTHER+LIABILITY%2C+WHETHER+IN+AN+ACTION+OF+CONTRACT%2C+TORT+OR+OTHERWISE%2C%0D%0A%23+ARISING+FROM%2C+OUT+OF+OR+IN+CONNECTION+WITH+THE+SOFTWARE+OR+THE+USE+OR+OTHER+DEALINGS+IN+THE+SOFTWARE.%0D%0A%0D%0A%23%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0D%0A%0D%0A%24exitCode+%3D+0%0D%0A%0D%0A%5Bint%5D%24MinOSDiskSizeGB+%3D+64%0D%0A%5Bint%5D%24MinMemoryGB+%3D+4%0D%0A%5BUint32%5D%24MinClockSpeedMHz+%3D+1000%0D%0A%5BUint32%5D%24MinLogicalCores+%3D+2%0D%0A%5BUint16%5D%24RequiredAddressWidth+%3D+64%0D%0A%0D%0A%24PASS_STRING+%3D+%22PASS%22%0D%0A%24FAIL_STRING+%3D+%22FAIL%22%0D%0A%24FAILED_TO_RUN_STRING+%3D+%22FAILED+TO+RUN%22%0D%0A%24UNDETERMINED_CAPS_STRING+%3D+%22UNDETERMINED%22%0D%0A%24UNDETERMINED_STRING+%3D+%22Undetermined%22%0D%0A%24CAPABLE_STRING+%3D+%22Capable%22%0D%0A%24NOT_CAPABLE_STRING+%3D+%22Not+capable%22%0D%0A%24CAPABLE_CAPS_STRING+%3D+%22CAPABLE%22%0D%0A%24NOT_CAPABLE_CAPS_STRING+%3D+%22NOT+CAPABLE%22%0D%0A%24STORAGE_STRING+%3D+%22Storage%22%0D%0A%24OS_DISK_SIZE_STRING+%3D+%22OSDiskSize%22%0D%0A%24MEMORY_STRING+%3D+%22Memory%22%0D%0A%24SYSTEM_MEMORY_STRING+%3D+%22System_Memory%22%0D%0A%24GB_UNIT_STRING+%3D+%22GB%22%0D%0A%24TPM_STRING+%3D+%22TPM%22%0D%0A%24TPM_VERSION_STRING+%3D+%22TPMVersion%22%0D%0A%24PROCESSOR_STRING+%3D+%22Processor%22%0D%0A%24SECUREBOOT_STRING+%3D+%22SecureBoot%22%0D%0A%24I7_7820HQ_CPU_STRING+%3D+%22i7-7820hq+CPU%22%0D%0A%0D%0A%23+0%3Dname+of+check%2C+1%3Dattribute+checked%2C+2%3Dvalue%2C+3%3DPASS%2FFAIL%2FUNDETERMINED%0D%0A%24logFormat+%3D+%27%7B0%7D%3A+%7B1%7D%3D%7B2%7D.+%7B3%7D%3B+%27%0D%0A%0D%0A%23+0%3Dname+of+check%2C+1%3Dattribute+checked%2C+2%3Dvalue%2C+3%3Dunit+of+the+value%2C+4%3DPASS%2FFAIL%2FUNDETERMINED%0D%0A%24logFormatWithUnit+%3D+%27%7B0%7D%3A+%7B1%7D%3D%7B2%7D%7B3%7D.+%7B4%7D%3B+%27%0D%0A%0D%0A%23+0%3Dname+of+check.%0D%0A%24logFormatReturnReason+%3D+%27%7B0%7D%2C+%27%0D%0A%0D%0A%23+0%3Dexception.%0D%0A%24logFormatException+%3D+%27%7B0%7D%3B+%27%0D%0A%0D%0A%23+0%3Dname+of+check%2C+1%3D+attribute+checked+and+its+value%2C+2%3DPASS%2FFAIL%2FUNDETERMINED%0D%0A%24logFormatWithBlob+%3D+%27%7B0%7D%3A+%7B1%7D.+%7B2%7D%3B+%27%0D%0A%0D%0A%23+return+returnCode+is+-1+when+an+exception+is+thrown.+1+if+the+value+does+not+meet+requirements.+0+if+successful.+-2+default%2C+script+didn%27t+run.%0D%0A%24outObject+%3D+%40%7B+returnCode+%3D+-2%3B+returnResult+%3D+%24FAILED_TO_RUN_STRING%3B+returnReason+%3D+%22%22%3B+logging+%3D+%22%22+%7D%0D%0A%0D%0A%23+NOT+CAPABLE%281%29+state+takes+precedence+over+UNDETERMINED%28-1%29+state%0D%0Afunction+Private%3AUpdateReturnCode+%7B%0D%0A++++param%28%0D%0A++++++++%5BParameter%28Mandatory+%3D+%24true%29%5D%0D%0A++++++++%5BValidateRange%28-2%2C+1%29%5D%0D%0A++++++++%5Bint%5D+%24ReturnCode%0D%0A++++%29%0D%0A%0D%0A++++Switch+%28%24ReturnCode%29+%7B%0D%0A%0D%0A++++++++0+%7B%0D%0A++++++++++++if+%28%24outObject.returnCode+-eq+-2%29+%7B%0D%0A++++++++++++++++%24outObject.returnCode+%3D+%24ReturnCode%0D%0A++++++++++++%7D%0D%0A++++++++%7D%0D%0A++++++++1+%7B%0D%0A++++++++++++%24outObject.returnCode+%3D+%24ReturnCode%0D%0A++++++++%7D%0D%0A++++++++-1+%7B%0D%0A++++++++++++if+%28%24outObject.returnCode+-ne+1%29+%7B%0D%0A++++++++++++++++%24outObject.returnCode+%3D+%24ReturnCode%0D%0A++++++++++++%7D%0D%0A++++++++%7D%0D%0A++++%7D%0D%0A%7D%0D%0A%0D%0A%24Source+%3D+%40%22%0D%0Ausing+Microsoft.Win32%3B%0D%0Ausing+System%3B%0D%0Ausing+System.Runtime.InteropServices%3B%0D%0A%0D%0A++++public+class+CpuFamilyResult%0D%0A++++%7B%0D%0A++++++++public+bool+IsValid+%7B+get%3B+set%3B+%7D%0D%0A++++++++public+string+Message+%7B+get%3B+set%3B+%7D%0D%0A++++%7D%0D%0A%0D%0A++++public+class+CpuFamily%0D%0A++++%7B%0D%0A++++++++%5BStructLayout%28LayoutKind.Sequential%29%5D%0D%0A++++++++public+struct+SYSTEM_INFO%0D%0A++++++++%7B%0D%0A++++++++++++public+ushort+ProcessorArchitecture%3B%0D%0A++++++++++++ushort+Reserved%3B%0D%0A++++++++++++public+uint+PageSize%3B%0D%0A++++++++++++public+IntPtr+MinimumApplicationAddress%3B%0D%0A++++++++++++public+IntPtr+MaximumApplicationAddress%3B%0D%0A++++++++++++public+IntPtr+ActiveProcessorMask%3B%0D%0A++++++++++++public+uint+NumberOfProcessors%3B%0D%0A++++++++++++public+uint+ProcessorType%3B%0D%0A++++++++++++public+uint+AllocationGranularity%3B%0D%0A++++++++++++public+ushort+ProcessorLevel%3B%0D%0A++++++++++++public+ushort+ProcessorRevision%3B%0D%0A++++++++%7D%0D%0A%0D%0A++++++++%5BDllImport%28%22kernel32.dll%22%29%5D%0D%0A++++++++internal+static+extern+void+GetNativeSystemInfo%28ref+SYSTEM_INFO+lpSystemInfo%29%3B%0D%0A%0D%0A++++++++public+enum+ProcessorFeature+%3A+uint%0D%0A++++++++%7B%0D%0A++++++++++++ARM_SUPPORTED_INSTRUCTIONS+%3D+34%0D%0A++++++++%7D%0D%0A%0D%0A++++++++%5BDllImport%28%22kernel32.dll%22%29%5D%0D%0A++++++++%5Breturn%3A+MarshalAs%28UnmanagedType.Bool%29%5D%0D%0A++++++++static+extern+bool+IsProcessorFeaturePresent%28ProcessorFeature+processorFeature%29%3B%0D%0A%0D%0A++++++++private+const+ushort+PROCESSOR_ARCHITECTURE_X86+%3D+0%3B%0D%0A++++++++private+const+ushort+PROCESSOR_ARCHITECTURE_ARM64+%3D+12%3B%0D%0A++++++++private+const+ushort+PROCESSOR_ARCHITECTURE_X64+%3D+9%3B%0D%0A%0D%0A++++++++private+const+string+INTEL_MANUFACTURER+%3D+%22GenuineIntel%22%3B%0D%0A++++++++private+const+string+AMD_MANUFACTURER+%3D+%22AuthenticAMD%22%3B%0D%0A++++++++private+const+string+QUALCOMM_MANUFACTURER+%3D+%22Qualcomm+Technologies+Inc%22%3B%0D%0A%0D%0A++++++++public+static+CpuFamilyResult+Validate%28string+manufacturer%2C+ushort+processorArchitecture%29%0D%0A++++++++%7B%0D%0A++++++++++++CpuFamilyResult+cpuFamilyResult+%3D+new+CpuFamilyResult%28%29%3B%0D%0A%0D%0A++++++++++++if+%28string.IsNullOrWhiteSpace%28manufacturer%29%29%0D%0A++++++++++++%7B%0D%0A++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++cpuFamilyResult.Message+%3D+%22Manufacturer+is+null+or+empty%22%3B%0D%0A++++++++++++++++return+cpuFamilyResult%3B%0D%0A++++++++++++%7D%0D%0A%0D%0A++++++++++++string+registryPath+%3D+%22HKEY_LOCAL_MACHINE%5C%5CHardware%5C%5CDescription%5C%5CSystem%5C%5CCentralProcessor%5C%5C0%22%3B%0D%0A++++++++++++SYSTEM_INFO+sysInfo+%3D+new+SYSTEM_INFO%28%29%3B%0D%0A++++++++++++GetNativeSystemInfo%28ref+sysInfo%29%3B%0D%0A%0D%0A++++++++++++switch+%28processorArchitecture%29%0D%0A++++++++++++%7B%0D%0A++++++++++++++++case+PROCESSOR_ARCHITECTURE_ARM64%3A%0D%0A%0D%0A++++++++++++++++++++if+%28manufacturer.Equals%28QUALCOMM_MANUFACTURER%2C+StringComparison.OrdinalIgnoreCase%29%29%0D%0A++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++bool+isArmv81Supported+%3D+IsProcessorFeaturePresent%28ProcessorFeature.ARM_SUPPORTED_INSTRUCTIONS%29%3B%0D%0A%0D%0A++++++++++++++++++++++++if+%28%21isArmv81Supported%29%0D%0A++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++string+registryName+%3D+%22CP+4030%22%3B%0D%0A++++++++++++++++++++++++++++long+registryValue+%3D+%28long%29Registry.GetValue%28registryPath%2C+registryName%2C+-1%29%3B%0D%0A++++++++++++++++++++++++++++long+atomicResult+%3D+%28registryValue+%3E%3E+20%29+%26+0xF%3B%0D%0A%0D%0A++++++++++++++++++++++++++++if+%28atomicResult+%3E%3D+2%29%0D%0A++++++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++++++isArmv81Supported+%3D+true%3B%0D%0A++++++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++++++%7D%0D%0A%0D%0A++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+isArmv81Supported%3B%0D%0A++++++++++++++++++++++++cpuFamilyResult.Message+%3D+isArmv81Supported+%3F+%22%22+%3A+%22Processor+does+not+implement+ARM+v8.1+atomic+instruction%22%3B%0D%0A++++++++++++++++++++%7D%0D%0A++++++++++++++++++++else%0D%0A++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22The+processor+isn%27t+currently+supported+for+Windows+11%22%3B%0D%0A++++++++++++++++++++%7D%0D%0A%0D%0A++++++++++++++++++++break%3B%0D%0A%0D%0A++++++++++++++++case+PROCESSOR_ARCHITECTURE_X64%3A%0D%0A++++++++++++++++case+PROCESSOR_ARCHITECTURE_X86%3A%0D%0A%0D%0A++++++++++++++++++++int+cpuFamily+%3D+sysInfo.ProcessorLevel%3B%0D%0A++++++++++++++++++++int+cpuModel+%3D+%28sysInfo.ProcessorRevision+%3E%3E+8%29+%26+0xFF%3B%0D%0A++++++++++++++++++++int+cpuStepping+%3D+sysInfo.ProcessorRevision+%26+0xFF%3B%0D%0A%0D%0A++++++++++++++++++++if+%28manufacturer.Equals%28INTEL_MANUFACTURER%2C+StringComparison.OrdinalIgnoreCase%29%29%0D%0A++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++try%0D%0A++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+true%3B%0D%0A++++++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22%22%3B%0D%0A%0D%0A++++++++++++++++++++++++++++if+%28cpuFamily+%3E%3D+6+%26%26+cpuModel+%3C%3D+95+%26%26+%21%28cpuFamily+%3D%3D+6+%26%26+cpuModel+%3D%3D+85%29%29%0D%0A++++++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22%22%3B%0D%0A++++++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++++++++++else+if+%28cpuFamily+%3D%3D+6+%26%26+%28cpuModel+%3D%3D+142+%7C%7C+cpuModel+%3D%3D+158%29+%26%26+cpuStepping+%3D%3D+9%29%0D%0A++++++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++++++string+registryName+%3D+%22Platform+Specific+Field+1%22%3B%0D%0A++++++++++++++++++++++++++++++++int+registryValue+%3D+%28int%29Registry.GetValue%28registryPath%2C+registryName%2C+-1%29%3B%0D%0A%0D%0A++++++++++++++++++++++++++++++++if+%28%28cpuModel+%3D%3D+142+%26%26+registryValue+%21%3D+16%29+%7C%7C+%28cpuModel+%3D%3D+158+%26%26+registryValue+%21%3D+8%29%29%0D%0A++++++++++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22PlatformId+%22+%2B+registryValue%3B%0D%0A++++++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++++++catch+%28Exception+ex%29%0D%0A++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22Exception%3A%22+%2B+ex.GetType%28%29.Name%3B%0D%0A++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++%7D%0D%0A++++++++++++++++++++else+if+%28manufacturer.Equals%28AMD_MANUFACTURER%2C+StringComparison.OrdinalIgnoreCase%29%29%0D%0A++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+true%3B%0D%0A++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22%22%3B%0D%0A%0D%0A++++++++++++++++++++++++if+%28cpuFamily+%3C+23+%7C%7C+%28cpuFamily+%3D%3D+23+%26%26+%28cpuModel+%3D%3D+1+%7C%7C+cpuModel+%3D%3D+17%29%29%29%0D%0A++++++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++++++%7D%0D%0A++++++++++++++++++++%7D%0D%0A++++++++++++++++++++else%0D%0A++++++++++++++++++++%7B%0D%0A++++++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++++++cpuFamilyResult.Message+%3D+%22Unsupported+Manufacturer%3A+%22+%2B+manufacturer+%2B+%22%2C+Architecture%3A+%22+%2B+processorArchitecture+%2B+%22%2C+CPUFamily%3A+%22+%2B+sysInfo.ProcessorLevel+%2B+%22%2C+ProcessorRevision%3A+%22+%2B+sysInfo.ProcessorRevision%3B%0D%0A++++++++++++++++++++%7D%0D%0A%0D%0A++++++++++++++++++++break%3B%0D%0A%0D%0A++++++++++++++++default%3A%0D%0A++++++++++++++++++++cpuFamilyResult.IsValid+%3D+false%3B%0D%0A++++++++++++++++++++cpuFamilyResult.Message+%3D+%22Unsupported+CPU+category.+Manufacturer%3A+%22+%2B+manufacturer+%2B+%22%2C+Architecture%3A+%22+%2B+processorArchitecture+%2B+%22%2C+CPUFamily%3A+%22+%2B+sysInfo.ProcessorLevel+%2B+%22%2C+ProcessorRevision%3A+%22+%2B+sysInfo.ProcessorRevision%3B%0D%0A++++++++++++++++++++break%3B%0D%0A++++++++++++%7D%0D%0A++++++++++++return+cpuFamilyResult%3B%0D%0A++++++++%7D%0D%0A++++%7D%0D%0A%22%40%0D%0A%0D%0A%23+Storage%0D%0Atry+%7B%0D%0A++++%24osDrive+%3D+Get-WmiObject+-Class+Win32_OperatingSystem+%7C+Select-Object+-Property+SystemDrive%0D%0A++++%24osDriveSize+%3D+Get-WmiObject+-Class+Win32_LogicalDisk+-filter+%22DeviceID%3D%27%24%28%24osDrive.SystemDrive%29%27%22+%7C+Select-Object+%40%7BName+%3D+%22SizeGB%22%3B+Expression+%3D+%7B+%24_.Size+%2F+1GB+-as+%5Bint%5D+%7D+%7D++%0D%0A%0D%0A++++if+%28%24null+-eq+%24osDriveSize%29+%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24STORAGE_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24STORAGE_STRING%2C+%22Storage+is+null%22%2C+%24FAIL_STRING%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A++++elseif+%28%24osDriveSize.SizeGB+-lt+%24MinOSDiskSizeGB%29+%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24STORAGE_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithUnit+-f+%24STORAGE_STRING%2C+%24OS_DISK_SIZE_STRING%2C+%28%24osDriveSize.SizeGB%29%2C+%24GB_UNIT_STRING%2C+%24FAIL_STRING%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A++++else+%7B%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithUnit+-f+%24STORAGE_STRING%2C+%24OS_DISK_SIZE_STRING%2C+%28%24osDriveSize.SizeGB%29%2C+%24GB_UNIT_STRING%2C+%24PASS_STRING%0D%0A++++++++UpdateReturnCode+-ReturnCode+0%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24STORAGE_STRING%2C+%24OS_DISK_SIZE_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0A%0D%0A%23+Memory+%28bytes%29%0D%0Atry+%7B%0D%0A++++%24memory+%3D+Get-WmiObject+Win32_PhysicalMemory+%7C+Measure-Object+-Property+Capacity+-Sum+%7C+Select-Object+%40%7BName+%3D+%22SizeGB%22%3B+Expression+%3D+%7B+%24_.Sum+%2F+1GB+-as+%5Bint%5D+%7D+%7D%0D%0A%0D%0A++++if+%28%24null+-eq+%24memory%29+%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24MEMORY_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24MEMORY_STRING%2C+%22Memory+is+null%22%2C+%24FAIL_STRING%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A++++elseif+%28%24memory.SizeGB+-lt+%24MinMemoryGB%29+%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24MEMORY_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithUnit+-f+%24MEMORY_STRING%2C+%24SYSTEM_MEMORY_STRING%2C+%28%24memory.SizeGB%29%2C+%24GB_UNIT_STRING%2C+%24FAIL_STRING%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A++++else+%7B%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithUnit+-f+%24MEMORY_STRING%2C+%24SYSTEM_MEMORY_STRING%2C+%28%24memory.SizeGB%29%2C+%24GB_UNIT_STRING%2C+%24PASS_STRING%0D%0A++++++++UpdateReturnCode+-ReturnCode+0%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24MEMORY_STRING%2C+%24SYSTEM_MEMORY_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0A%0D%0A%23+TPM%0D%0Atry+%7B%0D%0A++++%24tpm+%3D+Get-Tpm%0D%0A%0D%0A++++if+%28%24null+-eq+%24tpm%29+%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24TPM_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24TPM_STRING%2C+%22TPM+is+null%22%2C+%24FAIL_STRING%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A++++elseif+%28%24tpm.TpmPresent%29+%7B%0D%0A++++++++%24tpmVersion+%3D+Get-WmiObject+-Class+Win32_Tpm+-Namespace+root%5CCIMV2%5CSecurity%5CMicrosoftTpm+%7C+Select-Object+-Property+SpecVersion%0D%0A%0D%0A++++++++if+%28%24null+-eq+%24tpmVersion.SpecVersion%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24TPM_STRING%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24TPM_STRING%2C+%24TPM_VERSION_STRING%2C+%22null%22%2C+%24FAIL_STRING%0D%0A++++++++++++%24exitCode+%3D+1%0D%0A++++++++%7D%0D%0A%0D%0A++++++++%24majorVersion+%3D+%24tpmVersion.SpecVersion.Split%28%22%2C%22%29%5B0%5D+-as+%5Bint%5D%0D%0A++++++++if+%28%24majorVersion+-lt+2%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24TPM_STRING%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24TPM_STRING%2C+%24TPM_VERSION_STRING%2C+%28%24tpmVersion.SpecVersion%29%2C+%24FAIL_STRING%0D%0A++++++++++++%24exitCode+%3D+1%0D%0A++++++++%7D%0D%0A++++++++else+%7B%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24TPM_STRING%2C+%24TPM_VERSION_STRING%2C+%28%24tpmVersion.SpecVersion%29%2C+%24PASS_STRING%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+0%0D%0A++++++++%7D%0D%0A++++%7D%0D%0A++++else+%7B%0D%0A++++++++if+%28%24tpm.GetType%28%29.Name+-eq+%22String%22%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24TPM_STRING%2C+%24TPM_VERSION_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%24tpm%0D%0A++++++++%7D%0D%0A++++++++else+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode++1%0D%0A++++++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24TPM_STRING%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24TPM_STRING%2C+%24TPM_VERSION_STRING%2C+%28%24tpm.TpmPresent%29%2C+%24FAIL_STRING%0D%0A++++++++%7D%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24TPM_STRING%2C+%24TPM_VERSION_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0A%0D%0A%23+CPU+Details%0D%0A%24cpuDetails%3B%0D%0Atry+%7B%0D%0A++++%24cpuDetails+%3D+%40%28Get-WmiObject+-Class+Win32_Processor%29%5B0%5D%0D%0A%0D%0A++++if+%28%24null+-eq+%24cpuDetails%29+%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24PROCESSOR_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24PROCESSOR_STRING%2C+%22CpuDetails+is+null%22%2C+%24FAIL_STRING%0D%0A++++%7D%0D%0A++++else+%7B%0D%0A++++++++%24processorCheckFailed+%3D+%24false%0D%0A%0D%0A++++++++%23+AddressWidth%0D%0A++++++++if+%28%24null+-eq+%24cpuDetails.AddressWidth+-or+%24cpuDetails.AddressWidth+-ne+%24RequiredAddressWidth%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++++++%24processorCheckFailed+%3D+%24true%0D%0A++++++++++++%24exitCode+%3D+1%0D%0A++++++++%7D%0D%0A%0D%0A++++++++%23+ClockSpeed+is+in+MHz%0D%0A++++++++if+%28%24null+-eq+%24cpuDetails.MaxClockSpeed+-or+%24cpuDetails.MaxClockSpeed+-le+%24MinClockSpeedMHz%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+1%3B%0D%0A++++++++++++%24processorCheckFailed+%3D+%24true%0D%0A++++++++++++%24exitCode+%3D+1%0D%0A++++++++%7D%0D%0A%0D%0A++++++++%23+Number+of+Logical+Cores%0D%0A++++++++if+%28%24null+-eq+%24cpuDetails.NumberOfLogicalProcessors+-or+%24cpuDetails.NumberOfLogicalProcessors+-lt+%24MinLogicalCores%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++++++%24processorCheckFailed+%3D+%24true%0D%0A++++++++++++%24exitCode+%3D+1%0D%0A++++++++%7D%0D%0A%0D%0A++++++++%23+CPU+Family%0D%0A++++++++Add-Type+-TypeDefinition+%24Source%0D%0A++++++++%24cpuFamilyResult+%3D+%5BCpuFamily%5D%3A%3AValidate%28%5BString%5D%24cpuDetails.Manufacturer%2C+%5Buint16%5D%24cpuDetails.Architecture%29%0D%0A%0D%0A++++++++%24cpuDetailsLog+%3D+%22%7BAddressWidth%3D%24%28%24cpuDetails.AddressWidth%29%3B+MaxClockSpeed%3D%24%28%24cpuDetails.MaxClockSpeed%29%3B+NumberOfLogicalCores%3D%24%28%24cpuDetails.NumberOfLogicalProcessors%29%3B+Manufacturer%3D%24%28%24cpuDetails.Manufacturer%29%3B+Caption%3D%24%28%24cpuDetails.Caption%29%3B+%24%28%24cpuFamilyResult.Message%29%7D%22%0D%0A%0D%0A++++++++if+%28%21%24cpuFamilyResult.IsValid%29+%7B%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+1%0D%0A++++++++++++%24processorCheckFailed+%3D+%24true%0D%0A++++++++++++%24exitCode+%3D+1%0D%0A++++++++%7D%0D%0A%0D%0A++++++++if+%28%24processorCheckFailed%29+%7B%0D%0A++++++++++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24PROCESSOR_STRING%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24PROCESSOR_STRING%2C+%28%24cpuDetailsLog%29%2C+%24FAIL_STRING%0D%0A++++++++%7D%0D%0A++++++++else+%7B%0D%0A++++++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24PROCESSOR_STRING%2C+%28%24cpuDetailsLog%29%2C+%24PASS_STRING%0D%0A++++++++++++UpdateReturnCode+-ReturnCode+0%0D%0A++++++++%7D%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++%24outObject.logging+%2B%3D+%24logFormat+-f+%24PROCESSOR_STRING%2C+%24PROCESSOR_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0A%0D%0A%23+SecureBooot%0D%0Atry+%7B%0D%0A++++%24isSecureBootEnabled+%3D+Confirm-SecureBootUEFI%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24SECUREBOOT_STRING%2C+%24CAPABLE_STRING%2C+%24PASS_STRING%0D%0A++++UpdateReturnCode+-ReturnCode+0%0D%0A%7D%0D%0Acatch+%5BSystem.PlatformNotSupportedException%5D+%7B%0D%0A++++%23+PlatformNotSupportedException+%22Cmdlet+not+supported+on+this+platform.%22+-+SecureBoot+is+not+supported+or+is+non-UEFI+computer.%0D%0A++++UpdateReturnCode+-ReturnCode+1%0D%0A++++%24outObject.returnReason+%2B%3D+%24logFormatReturnReason+-f+%24SECUREBOOT_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24SECUREBOOT_STRING%2C+%24NOT_CAPABLE_STRING%2C+%24FAIL_STRING%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0Acatch+%5BSystem.UnauthorizedAccessException%5D+%7B%0D%0A++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24SECUREBOOT_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24SECUREBOOT_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++%24exitCode+%3D+1%0D%0A%7D%0D%0A%0D%0A%23+i7-7820hq+CPU%0D%0Atry+%7B%0D%0A++++%24supportedDevices+%3D+%40%28%27surface+studio+2%27%2C+%27precision+5520%27%29%0D%0A++++%24systemInfo+%3D+%40%28Get-WmiObject+-Class+Win32_ComputerSystem%29%5B0%5D%0D%0A%0D%0A++++if+%28%24null+-ne+%24cpuDetails%29+%7B%0D%0A++++++++if+%28%24cpuDetails.Name+-match+%27i7-7820hq+cpu+%40+2.90ghz%27%29%7B%0D%0A++++++++++++%24modelOrSKUCheckLog+%3D+%24systemInfo.Model.Trim%28%29%0D%0A++++++++++++if+%28%24supportedDevices+-contains+%24modelOrSKUCheckLog%29%7B%0D%0A++++++++++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24I7_7820HQ_CPU_STRING%2C+%24modelOrSKUCheckLog%2C+%24PASS_STRING%0D%0A++++++++++++++++%24outObject.returnCode+%3D+0%0D%0A++++++++++++++++%24exitCode+%3D+0%0D%0A++++++++++++%7D%0D%0A++++++++%7D%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++if+%28%24outObject.returnCode+-ne+0%29%7B%0D%0A++++++++UpdateReturnCode+-ReturnCode+-1%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatWithBlob+-f+%24I7_7820HQ_CPU_STRING%2C+%24UNDETERMINED_STRING%2C+%24UNDETERMINED_CAPS_STRING%0D%0A++++++++%24outObject.logging+%2B%3D+%24logFormatException+-f+%22%24%28%24_.Exception.GetType%28%29.Name%29+%24%28%24_.Exception.Message%29%22%0D%0A++++++++%24exitCode+%3D+1%0D%0A++++%7D%0D%0A%7D%0D%0A%0D%0ASwitch+%28%24outObject.returnCode%29+%7B%0D%0A%0D%0A++++0+%7B+%24outObject.returnResult+%3D+%24CAPABLE_CAPS_STRING+%7D%0D%0A++++1+%7B+%24outObject.returnResult+%3D+%24NOT_CAPABLE_CAPS_STRING+%7D%0D%0A++++-1+%7B+%24outObject.returnResult+%3D+%24UNDETERMINED_CAPS_STRING+%7D%0D%0A++++-2+%7B+%24outObject.returnResult+%3D+%24FAILED_TO_RUN_STRING+%7D%0D%0A%7D%0D%0A%0D%0A%24outObject+%7C+ConvertTo-Json+-Compress%0D%0A%27%40%0D%0A%0D%0A%3C%23+OPTIONS+%23%3E%0D%0A%0D%0A%24rocksaltPath+%3D+%22C%3A%5CRocksalt%22%0D%0A%0D%0Aif+%28%24AuditMode+-eq+%22UNATTEND%22%29+%7B%0D%0A++%24outPaths+%3D+%40%28%0D%0A++++%24rocksaltPath%0D%0A++%29%0D%0A%7D%0D%0Aelse+%7B%0D%0A++%24scriptPath+%3D+Split-Path+-Parent+%28%5BSystem.Diagnostics.Process%5D%3A%3AGetCurrentProcess%28%29.MainModule.FileName%29%0D%0A++Write-Host+%22Script+directory%3A+%24scriptPath%22%0D%0A++%24outPaths+%3D+%40%28%0D%0A++++%24scriptPath%0D%0A++++%24rocksaltPath%0D%0A++%29+%7C+Select-Object+-Unique%0D%0A%7D%0D%0A%0D%0A%3C%23+HELPER+FUNCTIONS+%23%3E%0D%0A%0D%0Afunction+Get-CommandStatus+%7B%0D%0A++param+%28%0D%0A++++++%5BScriptBlock%5D%24Command%2C%0D%0A++++++%5Bstring%5D%24Message%0D%0A++%29%0D%0A%0D%0A++try+%7B%0D%0A++++++%24CommandResult+%3D+%26+%24Command%0D%0A++++++if+%28%24%3F%29+%7B%0D%0A++++++++++Write-Host+%22Got+%24Message%22%0D%0A++++++%7D+else+%7B%0D%0A++++++++++Write-Host+%22Failed+to+get+%24Message%22+-ForegroundColor+Red%0D%0A++++++%7D%0D%0A++%7D%0D%0A++catch+%7B%0D%0A++++++Write-Host+%22Error+while+getting+%24%7BMessage%7D%3A+%24_%22+-ForegroundColor+Red%0D%0A++++++%24CommandResult+%3D+%24null++%23+In+case+of+an+error%2C+return+%24null%0D%0A++%7D%0D%0A%0D%0A++return+%24CommandResult%0D%0A%7D%0D%0A%0D%0A%23+%28from+https%3A%2F%2Fwww.dmtf.org%2Fsites%2Fdefault%2Ffiles%2Fstandards%2Fdocuments%2FDSP0134_3.4.0a.pdf%29%0D%0AFunction+Convert-RamMemoryType%28%5BParameter%28Mandatory+%3D+%24true%29%5D%24MemoryTypeDecimal%29+%7B%0D%0A++switch+%28%24MemoryTypeDecimal%29+%7B%0D%0A++++00+%7B+%27Unknown%27+%7D%0D%0A++++01+%7B+%27Other%27+%7D%0D%0A++++02+%7B+%27DRAM%27+%7D%0D%0A++++03+%7B+%27Synchronous+DRAM%27+%7D%0D%0A++++04+%7B+%27Cache+DRAM%27+%7D%0D%0A++++05+%7B+%27EDO%27+%7D%0D%0A++++06+%7B+%27EDRAM%27+%7D%0D%0A++++07+%7B+%27VRAM%27+%7D%0D%0A++++08+%7B+%27SRAM%27+%7D%0D%0A++++09+%7B+%27RAM%27+%7D%0D%0A++++10+%7B+%27ROM%27+%7D%0D%0A++++11+%7B+%27FLASH%27+%7D%0D%0A++++12+%7B+%27EEPROM%27+%7D%0D%0A++++13+%7B+%27FEPROM%27+%7D%0D%0A++++14+%7B+%27EPROM%27+%7D%0D%0A++++15+%7B+%27CDRAM%27+%7D%0D%0A++++16+%7B+%273DRAM%27+%7D%0D%0A++++17+%7B+%27SDRAM%27+%7D%0D%0A++++18+%7B+%27SGRAM%27+%7D%0D%0A++++19+%7B+%27RDRAM%27+%7D%0D%0A++++20+%7B+%27DDR%27+%7D%0D%0A++++21+%7B+%27DDR2%27+%7D%0D%0A++++22+%7B+%27DDR+FB-DIMM%27+%7D%0D%0A++++24+%7B+%27DDR3%27+%7D%0D%0A++++25+%7B+%27FBD2%27+%7D%0D%0A++++26+%7B+%27DDR4%27+%7D%0D%0A++++27+%7B+%27LPDDR%27+%7D%0D%0A++++28+%7B+%27LPDDR2%27+%7D%0D%0A++++29+%7B+%27LPDDR3%27+%7D%0D%0A++++30+%7B+%27LPDDR4%27+%7D%0D%0A++++31+%7B+%27Logical+non-volatile+device%27+%7D%0D%0A++++32+%7B+%27HBM%27+%7D%0D%0A++++33+%7B+%27HBM2%27+%7D%0D%0A++++34+%7B+%27DDR5%27+%7D%0D%0A++++35+%7B+%27LPDDR5%27+%7D%0D%0A++++Default+%7B+%27Unknown%27+%7D%0D%0A++%7D%0D%0A%7D%0D%0A%0D%0Afunction+Read-Y%28%24prompt%29+%7B%0D%0A++do+%7B%0D%0A++++%24response+%3D+Read-Host+%22%24prompt+%28Y%2Fn%29%22%0D%0A++%7D+while+%28%24response+-notmatch+%27%5E%28y%7Cn%7C%29%24%27%29%0D%0A++return+%24response+-ne+%27n%27%0D%0A%7D%0D%0A%0D%0Afunction+Read-N%28%24prompt%29+%7B%0D%0A++do+%7B%0D%0A++++%24response+%3D+Read-Host+%22%24prompt+%28y%2FN%29%22%0D%0A++%7D+while+%28%24response+-notmatch+%27%5E%28y%7Cn%7C%29%24%27%29%0D%0A++return+%24response+-eq+%27y%27%0D%0A%7D%0D%0A%0D%0Afunction+Read-No%28%24prompt%29+%7B%0D%0A++if+%28Read-N%28%24prompt%29%29+%7B%0D%0A++++return+%22Yes%22%0D%0A++%7D%0D%0A++else+%7B%0D%0A++++return+%22No%22%0D%0A++%7D%0D%0A%7D%0D%0A%0D%0Afunction+Get-TeamViewerInfo+%7B%0D%0A++%24possiblePaths+%3D+%40%28%0D%0A++++%22HKLM%3A%5CSOFTWARE%5CTeamViewer%22%2C%0D%0A++++%22HKLM%3A%5CSOFTWARE%5CWow6432Node%5CTeamViewer%22%0D%0A++%29%0D%0A%0D%0A++%24TeamViewerInfo+%3D+%24null%0D%0A++foreach+%28%24path+in+%24possiblePaths%29+%7B%0D%0A++++if+%28Test-Path+%24path%29+%7B%0D%0A++++++%24TeamViewerInfo+%3D+Get-CommandStatus+-Command+%7B+Get-ItemProperty+-Path+%24path+%7D+-Message+%22TeamViewer+info+from%3A+%24path%22%0D%0A++++%7D%0D%0A++%7D%0D%0A++return+%24TeamViewerInfo%0D%0A%7D%0D%0A%0D%0Afunction+Add-RocksaltUser+%7B%0D%0A++if+%28%24AuditMode+-ne+%22UNATTEND%22+-and+%28Read-Y+%22Create+local+Rocksalt+user%3F%22%29%29+%7B%0D%0A++++%24password+%3D+Read-Host+%22Enter+password%22+-AsSecureString%0D%0A++++New-LocalUser+-Name+%22Rocksalt%22+-Password+%24password+-FullName+%22Rocksalt%22+-Description+%22Rocksalt%22+%7C+Out-Null%0D%0A++++Add-LocalGroupMember+-Group+%22Administrators%22+-Member+%22Rocksalt%22+%7C+Out-Null%0D%0A++++Write-Host+%22Rocksalt+user+created%22%0D%0A++++return+%22Yes%22%0D%0A++%7D%0D%0A++return+%22No%22%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+INITIAL+SETUP+%23%3E%0D%0A%0D%0A%24warnings+%3D+%40%28%29%0D%0A%0D%0A%23+Ensure+directory+exists%0D%0Aif+%28-not+%28Test-Path+-Path+%24rocksaltPath%29%29+%7B%0D%0A++New-Item+-ItemType+Directory+-Path+%24rocksaltPath+%7C+Out-Null%0D%0A++Write-Host+%22Output+directory+created%3A+%24rocksaltPath%22%0D%0A%7D%0D%0Aelse+%7B%0D%0A++Write-Host+%22Output+directory+already+exists%3A+%24rocksaltPath%22%0D%0A%7D%0D%0A%0D%0A%23+Run+various+%27Get%27+functions+and+save+to+local+variables%0D%0A%23+%28e.g.+so+that+we+only+have+to+call+Get-ComputerInfo+once+-+it+is+a+very+slow+function%21%29%0D%0AWrite-Host+%22%60n%3D%3D%3D+Getting+system+information+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0A%24ComputerName+%3D+%24env%3ACOMPUTERNAME%0D%0A%24ComputerInfo+%3D+Get-CommandStatus+-Command+%7B+Get-ComputerInfo+%7D+-Message+%27computer+info%27%0D%0A%24RamInfo+%3D+Get-CommandStatus+-Command+%7B+Get-WmiObject+-Class+Win32_PhysicalMemory+%7D+-Message+%27RAM%27%0D%0A%24Admins+%3D+Get-CommandStatus+-Command+%7B+Get-LocalGroupMember+-Group+%22Administrators%22+%7C+Select-Object+-ExpandProperty+Name+%7D+-Message+%27admins%27%0D%0A%24Users+%3D+Get-CommandStatus+-Command+%7B+Get-LocalGroupMember+-Group+%22Users%22+%7C+Where-Object+%7B%0D%0A++%24Admins+-notcontains+%24_.Name+-and%0D%0A++%24_.Name+-notmatch+%22%5ENT+AUTHORITY%22+-and%0D%0A++%24_.Name+-notmatch+%22%5EBUILTIN%22%0D%0A%7D+%7C+Select-Object+-ExpandProperty+Name+%7D+-Message+%27users%27%0D%0A%24TeamViewerInfo+%3D+Get-TeamViewerInfo%0D%0A%24bitlocker+%3D+Get-CommandStatus+-Command+%7B+Get-BitLockerVolume+-MountPoint+%22C%3A%22+%7D+-Message+%27BitLocker%27%0D%0A%24PhysicalDisks+%3D+Get-CommandStatus+-Command+%7B+Get-PhysicalDisk+%7D+-Message+%27disks%27%0D%0A%24InstalledSoftware+%3D+Get-CommandStatus+-Command+%7B+Get-ItemProperty+-Path+HKLM%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CUninstall%5C*%2C+HKLM%3A%5CSOFTWARE%5CWow6432Node%5CMicrosoft%5CWindows%5CCurrentVersion%5CUninstall%5C*+%7D+-Message+%27software%27%0D%0A%24HardwareReadiness+%3D+Get-CommandStatus+-Command+%7B+Invoke-Expression+%24hardwareReadinessScript+2%3E%261+%7C+Out-String+%7C+ConvertFrom-Json+%7D+-Message+%27hardware+readiness%27%0D%0A%0D%0A%0D%0A%3C%23+AUDIT+INFORMATION+%23%3E%0D%0A%0D%0A%24date+%3D+Get-Date+-Format+%22yyyy-MM-dd%22%0D%0A%24manufacturer+%3D+%24ComputerInfo.CsManufacturer%0D%0A%24model+%3D+%24ComputerInfo.CsModel%0D%0A%24type+%3D+if+%28%24ComputerInfo.CsPCSystemType+-eq+2%29+%7B+%22Laptop%22+%7D+else+%7B+%22Desktop%22+%7D%0D%0A%24serialNumber+%3D+%24ComputerInfo.BiosSeralNumber%0D%0A%24os+%3D+%24ComputerInfo.OSName%0D%0A%24domainName+%3D+%24ComputerInfo.CsDomain%0D%0A%24processor+%3D+%24ComputerInfo.CsProcessors.Name+-join+%27%2C+%27%0D%0A%24ram+%3D+%22%24%28%5Bmath%5D%3A%3ARound%28%24ComputerInfo.CsTotalPhysicalMemory+%2F+1GB%29%29GB%22%0D%0Atry+%7B%0D%0A++%24ramType+%3D+Convert-RamMemoryType+-MemoryTypeDecimal+%28%24RamInfo%5B0%5D.SMBIOSMemoryType%29%0D%0A%7D%0D%0Acatch+%7B%0D%0A++%24ramType+%3D+%22Unknown%22%0D%0A%7D%0D%0A%24disk1Size+%3D+%22%24%28%5Bmath%5D%3A%3ARound%28%24PhysicalDisks%5B0%5D.Size+%2F+1GB%29%29GB%22%0D%0A%24disk1Type+%3D+%22%24%28%24PhysicalDisks%5B0%5D.MediaType%29+%24%28%24PhysicalDisks%5B0%5D.BusType%29%22%0D%0Aif+%28%24PhysicalDisks.Count+-gt+1%29+%7B%0D%0A++%24disk2Size+%3D+%22%24%28%5Bmath%5D%3A%3ARound%28%24PhysicalDisks%5B1%5D.Size+%2F+1GB%29%29GB%22%0D%0A++%24disk2Type+%3D+%22%24%28%24PhysicalDisks%5B1%5D.MediaType%29+%24%28%24PhysicalDisks%5B1%5D.BusType%29%22%0D%0A%7D%0D%0Aelse+%7B%0D%0A++%24disk2Size+%3D+%22N%2FA%22%0D%0A++%24disk2Type+%3D+%22N%2FA%22%0D%0A%7D%0D%0A%24teamViewer+%3D+%24TeamViewerInfo.ClientID%0D%0A%24chromeVersion+%3D+%28%24InstalledSoftware+%7C+Where-Object+%7B+%24_.DisplayName+-eq+%22Google+Chrome%22+%7D%29.DisplayVersion%0D%0A%24firefoxVersion+%3D+%28%24InstalledSoftware+%7C+Where-Object+%7B+%24_.DisplayName+-eq+%22Mozilla+Firefox%22+%7D%29.DisplayVersion%0D%0A%24edgeVersion+%3D+%28%24InstalledSoftware+%7C+Where-Object+%7B+%24_.DisplayName+-eq+%22Microsoft+Edge%22+%7D%29.DisplayVersion%0D%0A%0D%0Aif+%28%24physicalDisks.Count+-gt+2%29+%7B%0D%0A++Write-Host+%22Warning%3A+More+than+2+disks+detected%22+-ForegroundColor+Yellow%0D%0A++%24warnings+%2B%3D+%22More+than+2+disks+detected%22%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+BRUTE+FORCE+PROTECTION+%23%3E%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Running+brute+force+commands+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0Anet+accounts+%2Flockoutthreshold%3A10%0D%0Anet+accounts+%2Flockoutwindow%3A5%0D%0Anet+accounts+%2Flockoutduration%3A30%0D%0A%0D%0A%0D%0A%3C%23+TEAMVIEWER+%23%3E%0D%0A%0D%0Aif+%28-not+%24TeamViewerInfo%29+%7B%0D%0A++Write-Host+%22%60n%3D%3D%3D+Checking+Teamviewer+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A++Write-Host+%22TeamViewer+not+installed%22+-ForegroundColor+Red%0D%0A++if+%28%24AuditMode+-eq+%22UNATTEND%22+-or+%28Read-Y+%22Install+TeamViewer%3F%22%29%29+%7B%0D%0A++++%24teamviewerInstaller+%3D+Join-Path+-Path+%24rocksaltPath+-ChildPath+%22TeamViewer_Host_Setup.exe%22%0D%0A++++%23+Download+TeamViewer%0D%0A++++Invoke-WebRequest+-Uri+%22https%3A%2F%2Frocksalt.cc%2Ftv%22+-OutFile+%24teamviewerInstaller%0D%0A++++if+%28%24%3F%29+%7B%0D%0A++++++Write-Host+%22TeamViewer+installer+downloaded+to+%24teamviewerInstaller%22%0D%0A%0D%0A++++++%23+Install+TeamViewer+silently%0D%0A++++++Start-Process+%24teamviewerInstaller+-ArgumentList+%22%2FS%22%2C+%22%2FACCEPTEULA%3D1%22+-WindowStyle+Hidden+-Wait%0D%0A%0D%0A++++++if+%28%24%3F%29+%7B%0D%0A++++++++Write-Host+%22TeamViewer+installed+successfully%22%0D%0A++++++++%24TeamViewerInfo+%3D+Get-TeamViewerInfo%0D%0A++++++%7D%0D%0A++++++else+%7B%0D%0A++++++++Write-Host+%22Failed+to+install+TeamViewer%22+-ForegroundColor+Red%0D%0A++++++%7D%0D%0A++++%7D%0D%0A++++else+%7B%0D%0A++++++Write-Host+%22Failed+to+download+TeamViewer+installer%22+-ForegroundColor+Red%0D%0A++++%7D%0D%0A++%7D%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+ROCKSALT+USER+%23%3E%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Checking+for+Rocksalt+User+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0Aif+%28%24Admins+-contains+%22%24computerName%5CRocksalt%22%29+%7B%0D%0A++Write-Host+%22Local+Rocksalt+user+exits+and+is+administrator%22%0D%0A++%24rocksaltExists+%3D+%22Yes%22%0D%0A%7D%0D%0Aelseif+%28%24Admins+-match+%27%5C%5CRocksalt%24%27%29+%7B%0D%0A++Write-Host+%22Warning%3A+Rocksalt+is+an+administrator%2C+but+it%27s+a+domain+account%22+-ForegroundColor+Yellow%0D%0A%0D%0A++%24rocksaltExists+%3D+Add-RocksaltUser%0D%0A%7D%0D%0Aelseif+%28Get-LocalUser+-Name+%22Rocksalt%22+-ErrorAction+SilentlyContinue%29+%7B%0D%0A++Write-Host+%22Local+Rocksalt+user+is+not+administrator%22+-ForegroundColor+Red%0D%0A%0D%0A++if+%28%24AuditMode+-eq+%22UNATTEND%22+-or+%28Read-Y+%22Make+Rocksalt+admin%3F%22%29%29+%7B%0D%0A++++Add-LocalGroupMember+-Group+%22Administrators%22+-Member+%22Rocksalt%22%0D%0A++++Write+%22Local+Rocksalt+user+added+to+Administrators+group%22%0D%0A++++%24rocksaltExists+%3D+%22Yes%22%0D%0A++%7D%0D%0A++else+%7B%0D%0A++++%24rocksaltExists+%3D+%22No%22%0D%0A++%7D%0D%0A%7D%0D%0Aelse+%7B%0D%0A++Write-Host+%22Local+Rocksalt+user+does+not+exist%22+-ForegroundColor+Red%0D%0A%0D%0A++%24rocksaltExists+%3D+Add-RocksaltUser%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+WINDOWS+11+COMPATIBLE+%23%3E%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Checking+Windows+11+compatibility+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0A%24onWin11+%3D+%24os+-match+%2211%22%0D%0A%0D%0Aif+%28%24HardwareReadiness.returnResult+-eq+%22CAPABLE%22%29+%7B%0D%0A++Write-Host+%22Windows+11+compatible%22+-ForegroundColor+Green%0D%0A++%24win11Comp+%3D+%22Yes%22%0D%0A%0D%0A++if+%28-not+%24onWin11%29+%7B%0D%0A++++Write-Host+%22Windows+11+is+not+installed+please+update%22+-ForegroundColor+Red%0D%0A++%7D%0D%0A%7D%0D%0Aelse+%7B%0D%0A++Write-Host+%22Not+Windows+11+compatible%22+-ForegroundColor+Red%0D%0A++%24win11Comp+%3D+%22No%22%0D%0A++Write-Host+%22Reason%3A+%24%28%24HardwareReadiness.returnReason%29%22+-ForegroundColor+Red%0D%0A%0D%0A++if+%28%24onWin11%29+%7B%0D%0A++++Write-Host+%22Warning%3A+Windows+11+is+installed+but+not+compatible%22+-ForegroundColor+Yellow%0D%0A++++%24warnings+%2B%3D+%22Windows+11+is+installed+but+not+compatible%22%0D%0A++%7D%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+AUDITER+INPUT+%23%3E%0D%0A%0D%0Aif+%28%24AuditMode+-ne+%22UNATTEND%22%29+%7B%0D%0A++Write-Host+%22%60n%3D%3D%3D+Audit+information+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0A++%24auditer+%3D+Read-Host+%22RS+%28initials%29%22%0D%0A++%24name+%3D+Read-Host+%22Name%22%0D%0A++%24gi+%3D+%22GI%24%28%28Read-Host+%22GI%22%29+-replace+%27%5CD%27%2C+%27%27%29%22%0D%0A++%24updates+%3D+Read-No+%22Updates%22%0D%0A++%24drivers+%3D+Read-No+%22Drivers%22%0D%0A++%24antiVirus+%3D+Read-No+%22Antivirus%22%0D%0A++Write-Host+%22Admin+Accounts%3A+%24Admins%22%0D%0A++%24clientAdmin+%3D+Read-Host+%22Client+Admin%22%0D%0A++Write-Host+%22User+Accounts%3A+%24Users%22%0D%0A++%24userName+%3D+Read-Host+%22Username+%28Account+they+use%29%22%0D%0A%0D%0A++Write-Host+%22%60nChrome+version%3A+%24chromeVersion%60nFirefox+version%3A+%24firefoxVersion%60nEdge+version%3A+%24edgeVersion%22%0D%0A%0D%0A++%24InstalledSoftware+%7C%0D%0A++Where-Object+%7B+%24_.DisplayName+-ne+%24null+%7D+%7C%0D%0A++Sort-Object+DisplayName%2C+DisplayVersion+%7C%0D%0A++Format-Table+%40%7BLabel+%3D+%27Name%27%3B+Expression+%3D+%7B+%24_.DisplayName+%7D+%7D%2C%0D%0A++%40%7BLabel+%3D+%27Version%27%3B+Expression+%3D+%7B+%24_.DisplayVersion+%7D+%7D%2C%0D%0A++%40%7BLabel+%3D+%27Publisher%27%3B+Expression+%3D+%7B+%24_.Publisher+%7D+%7D%2C%0D%0A++%40%7BLabel+%3D+%27Install+Date%27%3B+Expression+%3D+%7B+%24_.InstallDate+%7D+%7D+-AutoSize%0D%0A++%24otherBrowsers+%3D+Read-Host+%22Other+browsers%22%0D%0A++%24softwareValid+%3D+Read-No+%22Software+valid%3F%22%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+BITLOCKER+%23%3E%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Checking+Bitlocker+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0A%24bitlockerFilenames+%3D+%40%28%29%0D%0A%0D%0Aif+%28%24bitlocker.ProtectionStatus+-eq+1%29+%7B%0D%0A++Write-Host+%22Bitlocker+is+enabled%22+-ForegroundColor+Green%0D%0A++%24bitlockerOn+%3D+%22Yes%22%0D%0A%0D%0A++%24protector+%3D+%24bitlocker.KeyProtector+%7C+Where-Object+%7B+%24_.KeyProtectorType+-eq+%27RecoveryPassword%27+%7D%0D%0A%0D%0A++%24bitlockerFilenames+%3D+%40%28%29%0D%0A++if+%28%24AuditMode+-ne+%22UNATTEND%22%29+%7B%0D%0A++++%24bitlockerFilenames+%2B%3D+%22%24gi+%24name+%24ComputerName+Bitlocker+%24%28%24protector.KeyProtectorId%29.txt%22%0D%0A++%7D%0D%0A++%24bitlockerFilenames+%2B%3D+%22%24ComputerName+Bitlocker+%24%28%24protector.KeyProtectorId%29.txt%22%0D%0A%0D%0A++%24bitlockerInfo+%3D+%22%24%28%24protector.KeyProtectorId%29%60n%24%28%24protector.RecoveryPassword%29%22%0D%0A%7D%0D%0Aelse+%7B%0D%0A++Write-Host+%22Bitlocker+is+not+enabled%22+-ForegroundColor+Red%0D%0A++%24bitlockerOn+%3D+%22No%22%0D%0A%7D%0D%0A%0D%0A%0D%0A%3C%23+OUTPUT+%23%3E%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Output+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0Aif+%28%24AuditMode+-ne+%22UNATTEND%22%29+%7B%0D%0A++%24notes+%3D+Read-Host+%22Notes%22%0D%0A%7D%0D%0A%0D%0Aif+%28%24warnings.Count+-gt+0+-and+%28%24AuditMode+-eq+%22UNATTEND%22+-or+%28Read-Y+%22Would+you+like+to+add+warnings+to+notes%3F%22%29%29%29+%7B%0D%0A++if+%28%24notes+-ne+%22%22%29+%7B%0D%0A++++%24notes+%2B%3D+%22%3B+%22%0D%0A++%7D%0D%0A++%24notes+%2B%3D+%22Warnings%3A+%24%28%24warnings+-join+%27%2C+%27%29%22%0D%0A%7D%0D%0A%0D%0A%24lineTable+%3D+%5BPSCustomObject%5D%40%7B%0D%0A++Auditer+++++++++%3D+%24auditer%0D%0A++Date++++++++++++%3D+%24date%0D%0A++Done++++++++++++%3D+%22Part%22%0D%0A++Users+++++++++++%3D+%24name%0D%0A++GI++++++++++++++%3D+%24gi%0D%0A++PCName++++++++++%3D+%24ComputerName%0D%0A++Manufacturer++++%3D+%24manufacturer%0D%0A++Model+++++++++++%3D+%24model%0D%0A++Type++++++++++++%3D+%24type%0D%0A++SerialNumber++++%3D+%24serialNumber%0D%0A++OS++++++++++++++%3D+%24os%0D%0A++Win11Compatible+%3D+%24win11Comp%0D%0A++Updates+++++++++%3D+%24updates%0D%0A++Drivers+++++++++%3D+%24drivers%0D%0A++AntiVirus+++++++%3D+%24antiVirus%0D%0A++RocksaltExists++%3D+%24rocksaltExists%0D%0A++ClientAdmin+++++%3D+%24clientAdmin%0D%0A++UserName++++++++%3D+%24userName%0D%0A++DomainName++++++%3D+%24domainName%0D%0A++Processor+++++++%3D+%24processor%0D%0A++RAM+++++++++++++%3D+%24ram%0D%0A++RAMType+++++++++%3D+%24ramType%0D%0A++DiskSize++++++++%3D+%24disk1Size%0D%0A++DiskType++++++++%3D+%24disk1Type%0D%0A++Disk2Size+++++++%3D+%24disk2Size%0D%0A++Disk2Type+++++++%3D+%24disk2Type%0D%0A++Bitlocker+++++++%3D+%24bitlockerOn%0D%0A++TeamViewer++++++%3D+%24teamviewer%0D%0A++BruteForce++++++%3D+%22Yes%22%0D%0A++ChromeVersion+++%3D+%24chromeVersion%0D%0A++FirefoxVersion++%3D+%24firefoxVersion%0D%0A++EdgeVersion+++++%3D+%24edgeVersion%0D%0A++OtherBrowsers+++%3D+%24otherBrowsers%0D%0A++SoftwareValid+++%3D+%24softwareValid%0D%0A++Notes+++++++++++%3D+%24notes%0D%0A%7D%0D%0A%0D%0A%24line+%3D+%28%24lineTable.PSObject.Properties+%7C+ForEach-Object+%7B+%24_.Value+%7D%29+-join+%22%60t%22%0D%0A%0D%0AWrite-Host+%22%60nTab-separated+Line%3A%60n%22+-ForegroundColor+DarkYellow%0D%0AWrite-Host+%24line%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Vertical+Table+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%24lineTable+%7C+Format-List%0D%0A%0D%0A%0D%0A%3C%23+SAVE+OUTPUT+%23%3E%0D%0A%0D%0AWrite-Host+%22%60n%3D%3D%3D+Saving+output+%3D%3D%3D%60n%22+-ForegroundColor+DarkYellow%0D%0A%0D%0Aforeach+%28%24path+in+%24outPaths%29+%7B%0D%0A++%24auditFile+%3D+Join-Path+%24path+%22Audit.txt%22%0D%0A++%24line+%7C+Out-File+-Append+-FilePath+%24auditFile%0D%0A++Write-Host+%22Audit+information+has+been+appended+to+%24auditFile%22%0D%0A%0D%0A++foreach+%28%24file+in+%24bitlockerFilenames%29+%7B%0D%0A++++%24bitlockerFile+%3D+Join-Path+%24path+%24file%0D%0A++++%24bitlockerInfo+%7C+Out-File+-FilePath+%24bitlockerFile%0D%0A++++if+%28Test-Path+%24bitlockerFile%29+%7B%0D%0A++++++Write-Host+%22Bitlocker+saved+to+%24bitlockerFile%60n%22%0D%0A++++++break%0D%0A++++%7D%0D%0A++++else+%7B%0D%0A++++++Write-Host+%22Failed+to+save+Bitlocker+info+to+%24bitlockerFile%60n%22+-ForegroundColor+Red%0D%0A++++%7D%0D%0A++%7D%0D%0A%7D%0D%0A%0D%0Aif+%28%24AuditMode+-ne+%22UNATTEND%22%29+%7B%0D%0A++Read-Host+-Prompt+%22Press+Enter+to+exit%22%0D%0A%7D&FirstLogonScriptType2=Ps1&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<SetupUILanguage>
+				<UILanguage>en-US</UILanguage>
+			</SetupUILanguage>
+			<InputLocale>0809:00000809</InputLocale>
+			<SystemLocale>en-GB</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>en-GB</UserLocale>
+		</component>
 		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<SetupUILanguage>
 				<UILanguage>en-US</UILanguage>
@@ -12,33 +21,53 @@
 			<UILanguage>en-US</UILanguage>
 			<UserLocale>en-GB</UserLocale>
 		</component>
-		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+		<component name="Microsoft-Windows-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<UserData>
 				<ProductKey>
-					<Key>00000-00000-00000-00000-00000</Key>
+					<Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
 					<WillShowUI>OnError</WillShowUI>
 				</ProductKey>
 				<AcceptEula>true</AcceptEula>
 			</UserData>
 			<UseConfigurationSet>false</UseConfigurationSet>
-			<RunSynchronous>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>1</Order>
-					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassTPMCheck /t REG_DWORD /d 1 /f</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>2</Order>
-					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>3</Order>
-					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f</Path>
-				</RunSynchronousCommand>
-			</RunSynchronous>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UserData>
+				<ProductKey>
+					<Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+					<WillShowUI>OnError</WillShowUI>
+				</ProductKey>
+				<AcceptEula>true</AcceptEula>
+			</UserData>
+			<UseConfigurationSet>false</UseConfigurationSet>
 		</component>
 	</settings>
 	<settings pass="generalize"></settings>
 	<settings pass="specialize">
+		<component name="Microsoft-Windows-Deployment" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<RunSynchronous>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<Path>powershell.exe -WindowStyle Normal -NoProfile -Command "$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>2</Order>
+					<Path>powershell.exe -WindowStyle Normal -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\Specialize.ps1' -Raw | Invoke-Expression;"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>3</Order>
+					<Path>reg.exe load "HKU\DefaultUser" "C:\Users\Default\NTUSER.DAT"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>4</Order>
+					<Path>powershell.exe -WindowStyle Normal -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\DefaultUser.ps1' -Raw | Invoke-Expression;"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>5</Order>
+					<Path>reg.exe unload "HKU\DefaultUser"</Path>
+				</RunSynchronousCommand>
+			</RunSynchronous>
+		</component>
 		<component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<RunSynchronous>
 				<RunSynchronousCommand wcm:action="add">
@@ -63,6 +92,9 @@
 				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<TimeZone>GMT Standard Time</TimeZone>
+		</component>
 		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<TimeZone>GMT Standard Time</TimeZone>
 		</component>
@@ -70,11 +102,53 @@
 	<settings pass="auditSystem"></settings>
 	<settings pass="auditUser"></settings>
 	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<InputLocale>0809:00000809</InputLocale>
+			<SystemLocale>en-GB</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>en-GB</UserLocale>
+		</component>
 		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<InputLocale>0809:00000809</InputLocale>
 			<SystemLocale>en-GB</SystemLocale>
 			<UILanguage>en-US</UILanguage>
 			<UserLocale>en-GB</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UserAccounts>
+				<LocalAccounts>
+					<LocalAccount wcm:action="add">
+						<Name>Rocksalt</Name>
+						<DisplayName></DisplayName>
+						<Group>Administrators</Group>
+						<Password>
+							<Value></Value>
+							<PlainText>true</PlainText>
+						</Password>
+					</LocalAccount>
+				</LocalAccounts>
+			</UserAccounts>
+			<AutoLogon>
+				<Username>Rocksalt</Username>
+				<Enabled>true</Enabled>
+				<LogonCount>1</LogonCount>
+				<Password>
+					<Value></Value>
+					<PlainText>true</PlainText>
+				</Password>
+			</AutoLogon>
+			<OOBE>
+				<ProtectYourPC>3</ProtectYourPC>
+				<HideEULAPage>true</HideEULAPage>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+				<HideOnlineAccountScreens>false</HideOnlineAccountScreens>
+			</OOBE>
+			<FirstLogonCommands>
+				<SynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<CommandLine>powershell.exe -WindowStyle Normal -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\FirstLogon.ps1' -Raw | Invoke-Expression;"</CommandLine>
+				</SynchronousCommand>
+			</FirstLogonCommands>
 		</component>
 		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<UserAccounts>
@@ -245,73 +319,6 @@ End If
 	&lt;/Actions&gt;
 &lt;/Task&gt;
 		</File>
-		<File path="C:\Windows\Setup\Scripts\ShowAllTrayIcons.ps1">
-if( [System.Environment]::OSVersion.Version.Build -lt 20000 ) {
-	# Windows 10
-	Set-ItemProperty -LiteralPath 'Registry::HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'EnableAutoTray' -Type 'DWord' -Value 0 -Force;
-} else {
-	# Windows 11
-	Register-ScheduledTask -TaskName 'ShowAllTrayIcons' -Xml $(
-		Get-Content -LiteralPath "C:\Windows\Setup\Scripts\ShowAllTrayIcons.xml" -Raw;
-	);
-}
-		</File>
-		<File path="C:\Windows\Setup\Scripts\ShowAllTrayIcons.xml">
-&lt;Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"&gt;
-	&lt;Triggers&gt;
-		&lt;LogonTrigger&gt;
-			&lt;Repetition&gt;
-				&lt;Interval&gt;PT1M&lt;/Interval&gt;
-				&lt;StopAtDurationEnd&gt;false&lt;/StopAtDurationEnd&gt;
-			&lt;/Repetition&gt;
-			&lt;Enabled&gt;true&lt;/Enabled&gt;
-		&lt;/LogonTrigger&gt;
-	&lt;/Triggers&gt;
-	&lt;Principals&gt;
-		&lt;Principal id="Author"&gt;
-			&lt;GroupId&gt;S-1-5-32-545&lt;/GroupId&gt;
-			&lt;RunLevel&gt;LeastPrivilege&lt;/RunLevel&gt;
-		&lt;/Principal&gt;
-	&lt;/Principals&gt;
-	&lt;Settings&gt;
-		&lt;MultipleInstancesPolicy&gt;IgnoreNew&lt;/MultipleInstancesPolicy&gt;
-		&lt;DisallowStartIfOnBatteries&gt;false&lt;/DisallowStartIfOnBatteries&gt;
-		&lt;StopIfGoingOnBatteries&gt;false&lt;/StopIfGoingOnBatteries&gt;
-		&lt;AllowHardTerminate&gt;true&lt;/AllowHardTerminate&gt;
-		&lt;StartWhenAvailable&gt;false&lt;/StartWhenAvailable&gt;
-		&lt;RunOnlyIfNetworkAvailable&gt;false&lt;/RunOnlyIfNetworkAvailable&gt;
-		&lt;IdleSettings&gt;
-			&lt;StopOnIdleEnd&gt;true&lt;/StopOnIdleEnd&gt;
-			&lt;RestartOnIdle&gt;false&lt;/RestartOnIdle&gt;
-		&lt;/IdleSettings&gt;
-		&lt;AllowStartOnDemand&gt;true&lt;/AllowStartOnDemand&gt;
-		&lt;Enabled&gt;true&lt;/Enabled&gt;
-		&lt;Hidden&gt;false&lt;/Hidden&gt;
-		&lt;RunOnlyIfIdle&gt;false&lt;/RunOnlyIfIdle&gt;
-		&lt;WakeToRun&gt;false&lt;/WakeToRun&gt;
-		&lt;ExecutionTimeLimit&gt;PT72H&lt;/ExecutionTimeLimit&gt;
-		&lt;Priority&gt;7&lt;/Priority&gt;
-	&lt;/Settings&gt;
-	&lt;Actions Context="Author"&gt;
-		&lt;Exec&gt;
-			&lt;Command&gt;C:\Windows\System32\wscript.exe&lt;/Command&gt;
-			&lt;Arguments&gt;C:\Windows\Setup\Scripts\ShowAllTrayIcons.vbs&lt;/Arguments&gt;
-		&lt;/Exec&gt;
-	&lt;/Actions&gt;
-&lt;/Task&gt;
-		</File>
-		<File path="C:\Windows\Setup\Scripts\ShowAllTrayIcons.vbs">
-HKCU = &amp;H80000001
-key = "Control Panel\NotifyIconSettings"
-Set reg = GetObject("winmgmts://./root/default:StdRegProv")
-If reg.EnumKey(HKCU, key, names) = 0 Then
-	If Not IsNull(names) Then
-		For Each name In names
-			reg.SetDWORDValue HKCU, key + "\" + name, "IsPromoted", 1
-		Next
-	End If
-End If
-		</File>
 		<File path="C:\Windows\Setup\Scripts\SetStartPins.ps1">
 $json = '{"pinnedList":[
   {"desktopAppLink":"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\File Explorer.lnk"},
@@ -366,86 +373,965 @@ $newPassword = Read-Host "Enter new password for Local Rocksalt account" -AsSecu
 Set-LocalUser -Name "Rocksalt" -Password $newPassword
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1">
-# Define output file path
-$outputDirectory = "C:\Rocksalt"
-$outputFile = "$outputDirectory\Audit.txt"
+#Requires -RunAsAdministrator
 
-New-Item -ItemType Directory -Path $outputDirectory
-Write-Host "Directory created: $outputDirectory"
+param (
+  [ValidateSet("NORMAL", "UNATTEND", "USB")]
+  [string]$AuditMode = "NORMAL",
+  [string]$auditer = "UNATTEND",
+  [string]$name = "UNATTEND",
+  [string]$gi = "UNATTEND",
+  [string]$updates = "UNATTEND",
+  [string]$drivers = "UNATTEND",
+  [string]$antiVirus = "UNATTEND",
+  [string]$clientAdmin = "UNATTEND",
+  [string]$userName = "UNATTEND",
+  [string]$otherBrowsers = "UNATTEND",
+  [string]$softwareValid = "UNATTEND"
+)
 
-$memoryType = @{
-  21 = "DDR 2"
-  24 = "DDR 3"
-  26 = "DDR 4"
+Write-Host "Audit script version 1.0.3`n" -ForegroundColor Green
+
+$hardwareReadinessScript = @'
+#=============================================================================================================================
+#
+# Script Name:     HardwareReadiness.ps1
+# Description:     Verifies the hardware compliance. Return code 0 for success. 
+#                  In case of failure, returns non zero error code along with error message.
+
+# This script is not supported under any Microsoft standard support program or service and is distributed under the MIT license
+
+# Copyright (C) 2021 Microsoft Corporation
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+# modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
+# is furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#=============================================================================================================================
+
+$exitCode = 0
+
+[int]$MinOSDiskSizeGB = 64
+[int]$MinMemoryGB = 4
+[Uint32]$MinClockSpeedMHz = 1000
+[Uint32]$MinLogicalCores = 2
+[Uint16]$RequiredAddressWidth = 64
+
+$PASS_STRING = "PASS"
+$FAIL_STRING = "FAIL"
+$FAILED_TO_RUN_STRING = "FAILED TO RUN"
+$UNDETERMINED_CAPS_STRING = "UNDETERMINED"
+$UNDETERMINED_STRING = "Undetermined"
+$CAPABLE_STRING = "Capable"
+$NOT_CAPABLE_STRING = "Not capable"
+$CAPABLE_CAPS_STRING = "CAPABLE"
+$NOT_CAPABLE_CAPS_STRING = "NOT CAPABLE"
+$STORAGE_STRING = "Storage"
+$OS_DISK_SIZE_STRING = "OSDiskSize"
+$MEMORY_STRING = "Memory"
+$SYSTEM_MEMORY_STRING = "System_Memory"
+$GB_UNIT_STRING = "GB"
+$TPM_STRING = "TPM"
+$TPM_VERSION_STRING = "TPMVersion"
+$PROCESSOR_STRING = "Processor"
+$SECUREBOOT_STRING = "SecureBoot"
+$I7_7820HQ_CPU_STRING = "i7-7820hq CPU"
+
+# 0=name of check, 1=attribute checked, 2=value, 3=PASS/FAIL/UNDETERMINED
+$logFormat = '{0}: {1}={2}. {3}; '
+
+# 0=name of check, 1=attribute checked, 2=value, 3=unit of the value, 4=PASS/FAIL/UNDETERMINED
+$logFormatWithUnit = '{0}: {1}={2}{3}. {4}; '
+
+# 0=name of check.
+$logFormatReturnReason = '{0}, '
+
+# 0=exception.
+$logFormatException = '{0}; '
+
+# 0=name of check, 1= attribute checked and its value, 2=PASS/FAIL/UNDETERMINED
+$logFormatWithBlob = '{0}: {1}. {2}; '
+
+# return returnCode is -1 when an exception is thrown. 1 if the value does not meet requirements. 0 if successful. -2 default, script didn't run.
+$outObject = @{ returnCode = -2; returnResult = $FAILED_TO_RUN_STRING; returnReason = ""; logging = "" }
+
+# NOT CAPABLE(1) state takes precedence over UNDETERMINED(-1) state
+function Private:UpdateReturnCode {
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateRange(-2, 1)]
+        [int] $ReturnCode
+    )
+
+    Switch ($ReturnCode) {
+
+        0 {
+            if ($outObject.returnCode -eq -2) {
+                $outObject.returnCode = $ReturnCode
+            }
+        }
+        1 {
+            $outObject.returnCode = $ReturnCode
+        }
+        -1 {
+            if ($outObject.returnCode -ne 1) {
+                $outObject.returnCode = $ReturnCode
+            }
+        }
+    }
 }
 
-# Set Brute Force rules
-Write-Host "Running brute force commands"
+$Source = @"
+using Microsoft.Win32;
+using System;
+using System.Runtime.InteropServices;
+
+    public class CpuFamilyResult
+    {
+        public bool IsValid { get; set; }
+        public string Message { get; set; }
+    }
+
+    public class CpuFamily
+    {
+        [StructLayout(LayoutKind.Sequential)]
+        public struct SYSTEM_INFO
+        {
+            public ushort ProcessorArchitecture;
+            ushort Reserved;
+            public uint PageSize;
+            public IntPtr MinimumApplicationAddress;
+            public IntPtr MaximumApplicationAddress;
+            public IntPtr ActiveProcessorMask;
+            public uint NumberOfProcessors;
+            public uint ProcessorType;
+            public uint AllocationGranularity;
+            public ushort ProcessorLevel;
+            public ushort ProcessorRevision;
+        }
+
+        [DllImport("kernel32.dll")]
+        internal static extern void GetNativeSystemInfo(ref SYSTEM_INFO lpSystemInfo);
+
+        public enum ProcessorFeature : uint
+        {
+            ARM_SUPPORTED_INSTRUCTIONS = 34
+        }
+
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool IsProcessorFeaturePresent(ProcessorFeature processorFeature);
+
+        private const ushort PROCESSOR_ARCHITECTURE_X86 = 0;
+        private const ushort PROCESSOR_ARCHITECTURE_ARM64 = 12;
+        private const ushort PROCESSOR_ARCHITECTURE_X64 = 9;
+
+        private const string INTEL_MANUFACTURER = "GenuineIntel";
+        private const string AMD_MANUFACTURER = "AuthenticAMD";
+        private const string QUALCOMM_MANUFACTURER = "Qualcomm Technologies Inc";
+
+        public static CpuFamilyResult Validate(string manufacturer, ushort processorArchitecture)
+        {
+            CpuFamilyResult cpuFamilyResult = new CpuFamilyResult();
+
+            if (string.IsNullOrWhiteSpace(manufacturer))
+            {
+                cpuFamilyResult.IsValid = false;
+                cpuFamilyResult.Message = "Manufacturer is null or empty";
+                return cpuFamilyResult;
+            }
+
+            string registryPath = "HKEY_LOCAL_MACHINE\\Hardware\\Description\\System\\CentralProcessor\\0";
+            SYSTEM_INFO sysInfo = new SYSTEM_INFO();
+            GetNativeSystemInfo(ref sysInfo);
+
+            switch (processorArchitecture)
+            {
+                case PROCESSOR_ARCHITECTURE_ARM64:
+
+                    if (manufacturer.Equals(QUALCOMM_MANUFACTURER, StringComparison.OrdinalIgnoreCase))
+                    {
+                        bool isArmv81Supported = IsProcessorFeaturePresent(ProcessorFeature.ARM_SUPPORTED_INSTRUCTIONS);
+
+                        if (!isArmv81Supported)
+                        {
+                            string registryName = "CP 4030";
+                            long registryValue = (long)Registry.GetValue(registryPath, registryName, -1);
+                            long atomicResult = (registryValue &gt;&gt; 20) &amp; 0xF;
+
+                            if (atomicResult &gt;= 2)
+                            {
+                                isArmv81Supported = true;
+                            }
+                        }
+
+                        cpuFamilyResult.IsValid = isArmv81Supported;
+                        cpuFamilyResult.Message = isArmv81Supported ? "" : "Processor does not implement ARM v8.1 atomic instruction";
+                    }
+                    else
+                    {
+                        cpuFamilyResult.IsValid = false;
+                        cpuFamilyResult.Message = "The processor isn't currently supported for Windows 11";
+                    }
+
+                    break;
+
+                case PROCESSOR_ARCHITECTURE_X64:
+                case PROCESSOR_ARCHITECTURE_X86:
+
+                    int cpuFamily = sysInfo.ProcessorLevel;
+                    int cpuModel = (sysInfo.ProcessorRevision &gt;&gt; 8) &amp; 0xFF;
+                    int cpuStepping = sysInfo.ProcessorRevision &amp; 0xFF;
+
+                    if (manufacturer.Equals(INTEL_MANUFACTURER, StringComparison.OrdinalIgnoreCase))
+                    {
+                        try
+                        {
+                            cpuFamilyResult.IsValid = true;
+                            cpuFamilyResult.Message = "";
+
+                            if (cpuFamily &gt;= 6 &amp;&amp; cpuModel &lt;= 95 &amp;&amp; !(cpuFamily == 6 &amp;&amp; cpuModel == 85))
+                            {
+                                cpuFamilyResult.IsValid = false;
+                                cpuFamilyResult.Message = "";
+                            }
+                            else if (cpuFamily == 6 &amp;&amp; (cpuModel == 142 || cpuModel == 158) &amp;&amp; cpuStepping == 9)
+                            {
+                                string registryName = "Platform Specific Field 1";
+                                int registryValue = (int)Registry.GetValue(registryPath, registryName, -1);
+
+                                if ((cpuModel == 142 &amp;&amp; registryValue != 16) || (cpuModel == 158 &amp;&amp; registryValue != 8))
+                                {
+                                    cpuFamilyResult.IsValid = false;
+                                }
+                                cpuFamilyResult.Message = "PlatformId " + registryValue;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            cpuFamilyResult.IsValid = false;
+                            cpuFamilyResult.Message = "Exception:" + ex.GetType().Name;
+                        }
+                    }
+                    else if (manufacturer.Equals(AMD_MANUFACTURER, StringComparison.OrdinalIgnoreCase))
+                    {
+                        cpuFamilyResult.IsValid = true;
+                        cpuFamilyResult.Message = "";
+
+                        if (cpuFamily &lt; 23 || (cpuFamily == 23 &amp;&amp; (cpuModel == 1 || cpuModel == 17)))
+                        {
+                            cpuFamilyResult.IsValid = false;
+                        }
+                    }
+                    else
+                    {
+                        cpuFamilyResult.IsValid = false;
+                        cpuFamilyResult.Message = "Unsupported Manufacturer: " + manufacturer + ", Architecture: " + processorArchitecture + ", CPUFamily: " + sysInfo.ProcessorLevel + ", ProcessorRevision: " + sysInfo.ProcessorRevision;
+                    }
+
+                    break;
+
+                default:
+                    cpuFamilyResult.IsValid = false;
+                    cpuFamilyResult.Message = "Unsupported CPU category. Manufacturer: " + manufacturer + ", Architecture: " + processorArchitecture + ", CPUFamily: " + sysInfo.ProcessorLevel + ", ProcessorRevision: " + sysInfo.ProcessorRevision;
+                    break;
+            }
+            return cpuFamilyResult;
+        }
+    }
+"@
+
+# Storage
+try {
+    $osDrive = Get-WmiObject -Class Win32_OperatingSystem | Select-Object -Property SystemDrive
+    $osDriveSize = Get-WmiObject -Class Win32_LogicalDisk -filter "DeviceID='$($osDrive.SystemDrive)'" | Select-Object @{Name = "SizeGB"; Expression = { $_.Size / 1GB -as [int] } }  
+
+    if ($null -eq $osDriveSize) {
+        UpdateReturnCode -ReturnCode 1
+        $outObject.returnReason += $logFormatReturnReason -f $STORAGE_STRING
+        $outObject.logging += $logFormatWithBlob -f $STORAGE_STRING, "Storage is null", $FAIL_STRING
+        $exitCode = 1
+    }
+    elseif ($osDriveSize.SizeGB -lt $MinOSDiskSizeGB) {
+        UpdateReturnCode -ReturnCode 1
+        $outObject.returnReason += $logFormatReturnReason -f $STORAGE_STRING
+        $outObject.logging += $logFormatWithUnit -f $STORAGE_STRING, $OS_DISK_SIZE_STRING, ($osDriveSize.SizeGB), $GB_UNIT_STRING, $FAIL_STRING
+        $exitCode = 1
+    }
+    else {
+        $outObject.logging += $logFormatWithUnit -f $STORAGE_STRING, $OS_DISK_SIZE_STRING, ($osDriveSize.SizeGB), $GB_UNIT_STRING, $PASS_STRING
+        UpdateReturnCode -ReturnCode 0
+    }
+}
+catch {
+    UpdateReturnCode -ReturnCode -1
+    $outObject.logging += $logFormat -f $STORAGE_STRING, $OS_DISK_SIZE_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+    $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+    $exitCode = 1
+}
+
+# Memory (bytes)
+try {
+    $memory = Get-WmiObject Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum | Select-Object @{Name = "SizeGB"; Expression = { $_.Sum / 1GB -as [int] } }
+
+    if ($null -eq $memory) {
+        UpdateReturnCode -ReturnCode 1
+        $outObject.returnReason += $logFormatReturnReason -f $MEMORY_STRING
+        $outObject.logging += $logFormatWithBlob -f $MEMORY_STRING, "Memory is null", $FAIL_STRING
+        $exitCode = 1
+    }
+    elseif ($memory.SizeGB -lt $MinMemoryGB) {
+        UpdateReturnCode -ReturnCode 1
+        $outObject.returnReason += $logFormatReturnReason -f $MEMORY_STRING
+        $outObject.logging += $logFormatWithUnit -f $MEMORY_STRING, $SYSTEM_MEMORY_STRING, ($memory.SizeGB), $GB_UNIT_STRING, $FAIL_STRING
+        $exitCode = 1
+    }
+    else {
+        $outObject.logging += $logFormatWithUnit -f $MEMORY_STRING, $SYSTEM_MEMORY_STRING, ($memory.SizeGB), $GB_UNIT_STRING, $PASS_STRING
+        UpdateReturnCode -ReturnCode 0
+    }
+}
+catch {
+    UpdateReturnCode -ReturnCode -1
+    $outObject.logging += $logFormat -f $MEMORY_STRING, $SYSTEM_MEMORY_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+    $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+    $exitCode = 1
+}
+
+# TPM
+try {
+    $tpm = Get-Tpm
+
+    if ($null -eq $tpm) {
+        UpdateReturnCode -ReturnCode 1
+        $outObject.returnReason += $logFormatReturnReason -f $TPM_STRING
+        $outObject.logging += $logFormatWithBlob -f $TPM_STRING, "TPM is null", $FAIL_STRING
+        $exitCode = 1
+    }
+    elseif ($tpm.TpmPresent) {
+        $tpmVersion = Get-WmiObject -Class Win32_Tpm -Namespace root\CIMV2\Security\MicrosoftTpm | Select-Object -Property SpecVersion
+
+        if ($null -eq $tpmVersion.SpecVersion) {
+            UpdateReturnCode -ReturnCode 1
+            $outObject.returnReason += $logFormatReturnReason -f $TPM_STRING
+            $outObject.logging += $logFormat -f $TPM_STRING, $TPM_VERSION_STRING, "null", $FAIL_STRING
+            $exitCode = 1
+        }
+
+        $majorVersion = $tpmVersion.SpecVersion.Split(",")[0] -as [int]
+        if ($majorVersion -lt 2) {
+            UpdateReturnCode -ReturnCode 1
+            $outObject.returnReason += $logFormatReturnReason -f $TPM_STRING
+            $outObject.logging += $logFormat -f $TPM_STRING, $TPM_VERSION_STRING, ($tpmVersion.SpecVersion), $FAIL_STRING
+            $exitCode = 1
+        }
+        else {
+            $outObject.logging += $logFormat -f $TPM_STRING, $TPM_VERSION_STRING, ($tpmVersion.SpecVersion), $PASS_STRING
+            UpdateReturnCode -ReturnCode 0
+        }
+    }
+    else {
+        if ($tpm.GetType().Name -eq "String") {
+            UpdateReturnCode -ReturnCode -1
+            $outObject.logging += $logFormat -f $TPM_STRING, $TPM_VERSION_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+            $outObject.logging += $logFormatException -f $tpm
+        }
+        else {
+            UpdateReturnCode -ReturnCode  1
+            $outObject.returnReason += $logFormatReturnReason -f $TPM_STRING
+            $outObject.logging += $logFormat -f $TPM_STRING, $TPM_VERSION_STRING, ($tpm.TpmPresent), $FAIL_STRING
+        }
+        $exitCode = 1
+    }
+}
+catch {
+    UpdateReturnCode -ReturnCode -1
+    $outObject.logging += $logFormat -f $TPM_STRING, $TPM_VERSION_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+    $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+    $exitCode = 1
+}
+
+# CPU Details
+$cpuDetails;
+try {
+    $cpuDetails = @(Get-WmiObject -Class Win32_Processor)[0]
+
+    if ($null -eq $cpuDetails) {
+        UpdateReturnCode -ReturnCode 1
+        $exitCode = 1
+        $outObject.returnReason += $logFormatReturnReason -f $PROCESSOR_STRING
+        $outObject.logging += $logFormatWithBlob -f $PROCESSOR_STRING, "CpuDetails is null", $FAIL_STRING
+    }
+    else {
+        $processorCheckFailed = $false
+
+        # AddressWidth
+        if ($null -eq $cpuDetails.AddressWidth -or $cpuDetails.AddressWidth -ne $RequiredAddressWidth) {
+            UpdateReturnCode -ReturnCode 1
+            $processorCheckFailed = $true
+            $exitCode = 1
+        }
+
+        # ClockSpeed is in MHz
+        if ($null -eq $cpuDetails.MaxClockSpeed -or $cpuDetails.MaxClockSpeed -le $MinClockSpeedMHz) {
+            UpdateReturnCode -ReturnCode 1;
+            $processorCheckFailed = $true
+            $exitCode = 1
+        }
+
+        # Number of Logical Cores
+        if ($null -eq $cpuDetails.NumberOfLogicalProcessors -or $cpuDetails.NumberOfLogicalProcessors -lt $MinLogicalCores) {
+            UpdateReturnCode -ReturnCode 1
+            $processorCheckFailed = $true
+            $exitCode = 1
+        }
+
+        # CPU Family
+        Add-Type -TypeDefinition $Source
+        $cpuFamilyResult = [CpuFamily]::Validate([String]$cpuDetails.Manufacturer, [uint16]$cpuDetails.Architecture)
+
+        $cpuDetailsLog = "{AddressWidth=$($cpuDetails.AddressWidth); MaxClockSpeed=$($cpuDetails.MaxClockSpeed); NumberOfLogicalCores=$($cpuDetails.NumberOfLogicalProcessors); Manufacturer=$($cpuDetails.Manufacturer); Caption=$($cpuDetails.Caption); $($cpuFamilyResult.Message)}"
+
+        if (!$cpuFamilyResult.IsValid) {
+            UpdateReturnCode -ReturnCode 1
+            $processorCheckFailed = $true
+            $exitCode = 1
+        }
+
+        if ($processorCheckFailed) {
+            $outObject.returnReason += $logFormatReturnReason -f $PROCESSOR_STRING
+            $outObject.logging += $logFormatWithBlob -f $PROCESSOR_STRING, ($cpuDetailsLog), $FAIL_STRING
+        }
+        else {
+            $outObject.logging += $logFormatWithBlob -f $PROCESSOR_STRING, ($cpuDetailsLog), $PASS_STRING
+            UpdateReturnCode -ReturnCode 0
+        }
+    }
+}
+catch {
+    UpdateReturnCode -ReturnCode -1
+    $outObject.logging += $logFormat -f $PROCESSOR_STRING, $PROCESSOR_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+    $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+    $exitCode = 1
+}
+
+# SecureBooot
+try {
+    $isSecureBootEnabled = Confirm-SecureBootUEFI
+    $outObject.logging += $logFormatWithBlob -f $SECUREBOOT_STRING, $CAPABLE_STRING, $PASS_STRING
+    UpdateReturnCode -ReturnCode 0
+}
+catch [System.PlatformNotSupportedException] {
+    # PlatformNotSupportedException "Cmdlet not supported on this platform." - SecureBoot is not supported or is non-UEFI computer.
+    UpdateReturnCode -ReturnCode 1
+    $outObject.returnReason += $logFormatReturnReason -f $SECUREBOOT_STRING
+    $outObject.logging += $logFormatWithBlob -f $SECUREBOOT_STRING, $NOT_CAPABLE_STRING, $FAIL_STRING
+    $exitCode = 1
+}
+catch [System.UnauthorizedAccessException] {
+    UpdateReturnCode -ReturnCode -1
+    $outObject.logging += $logFormatWithBlob -f $SECUREBOOT_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+    $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+    $exitCode = 1
+}
+catch {
+    UpdateReturnCode -ReturnCode -1
+    $outObject.logging += $logFormatWithBlob -f $SECUREBOOT_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+    $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+    $exitCode = 1
+}
+
+# i7-7820hq CPU
+try {
+    $supportedDevices = @('surface studio 2', 'precision 5520')
+    $systemInfo = @(Get-WmiObject -Class Win32_ComputerSystem)[0]
+
+    if ($null -ne $cpuDetails) {
+        if ($cpuDetails.Name -match 'i7-7820hq cpu @ 2.90ghz'){
+            $modelOrSKUCheckLog = $systemInfo.Model.Trim()
+            if ($supportedDevices -contains $modelOrSKUCheckLog){
+                $outObject.logging += $logFormatWithBlob -f $I7_7820HQ_CPU_STRING, $modelOrSKUCheckLog, $PASS_STRING
+                $outObject.returnCode = 0
+                $exitCode = 0
+            }
+        }
+    }
+}
+catch {
+    if ($outObject.returnCode -ne 0){
+        UpdateReturnCode -ReturnCode -1
+        $outObject.logging += $logFormatWithBlob -f $I7_7820HQ_CPU_STRING, $UNDETERMINED_STRING, $UNDETERMINED_CAPS_STRING
+        $outObject.logging += $logFormatException -f "$($_.Exception.GetType().Name) $($_.Exception.Message)"
+        $exitCode = 1
+    }
+}
+
+Switch ($outObject.returnCode) {
+
+    0 { $outObject.returnResult = $CAPABLE_CAPS_STRING }
+    1 { $outObject.returnResult = $NOT_CAPABLE_CAPS_STRING }
+    -1 { $outObject.returnResult = $UNDETERMINED_CAPS_STRING }
+    -2 { $outObject.returnResult = $FAILED_TO_RUN_STRING }
+}
+
+$outObject | ConvertTo-Json -Compress
+'@
+
+&lt;# OPTIONS #&gt;
+
+$rocksaltPath = "C:\Rocksalt"
+
+if ($AuditMode -eq "UNATTEND") {
+  $outPaths = @(
+    $rocksaltPath
+  )
+}
+else {
+  $scriptPath = Split-Path -Parent ([System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName)
+  Write-Host "Script directory: $scriptPath"
+  $outPaths = @(
+    $scriptPath
+    $rocksaltPath
+  ) | Select-Object -Unique
+}
+
+&lt;# HELPER FUNCTIONS #&gt;
+
+function Get-CommandStatus {
+  param (
+      [ScriptBlock]$Command,
+      [string]$Message
+  )
+
+  try {
+      $CommandResult = &amp; $Command
+      if ($?) {
+          Write-Host "Got $Message"
+      } else {
+          Write-Host "Failed to get $Message" -ForegroundColor Red
+      }
+  }
+  catch {
+      Write-Host "Error while getting ${Message}: $_" -ForegroundColor Red
+      $CommandResult = $null  # In case of an error, return $null
+  }
+
+  return $CommandResult
+}
+
+# (from https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.4.0a.pdf)
+Function Convert-RamMemoryType([Parameter(Mandatory = $true)]$MemoryTypeDecimal) {
+  switch ($MemoryTypeDecimal) {
+    00 { 'Unknown' }
+    01 { 'Other' }
+    02 { 'DRAM' }
+    03 { 'Synchronous DRAM' }
+    04 { 'Cache DRAM' }
+    05 { 'EDO' }
+    06 { 'EDRAM' }
+    07 { 'VRAM' }
+    08 { 'SRAM' }
+    09 { 'RAM' }
+    10 { 'ROM' }
+    11 { 'FLASH' }
+    12 { 'EEPROM' }
+    13 { 'FEPROM' }
+    14 { 'EPROM' }
+    15 { 'CDRAM' }
+    16 { '3DRAM' }
+    17 { 'SDRAM' }
+    18 { 'SGRAM' }
+    19 { 'RDRAM' }
+    20 { 'DDR' }
+    21 { 'DDR2' }
+    22 { 'DDR FB-DIMM' }
+    24 { 'DDR3' }
+    25 { 'FBD2' }
+    26 { 'DDR4' }
+    27 { 'LPDDR' }
+    28 { 'LPDDR2' }
+    29 { 'LPDDR3' }
+    30 { 'LPDDR4' }
+    31 { 'Logical non-volatile device' }
+    32 { 'HBM' }
+    33 { 'HBM2' }
+    34 { 'DDR5' }
+    35 { 'LPDDR5' }
+    Default { 'Unknown' }
+  }
+}
+
+function Read-Y($prompt) {
+  do {
+    $response = Read-Host "$prompt (Y/n)"
+  } while ($response -notmatch '^(y|n|)$')
+  return $response -ne 'n'
+}
+
+function Read-N($prompt) {
+  do {
+    $response = Read-Host "$prompt (y/N)"
+  } while ($response -notmatch '^(y|n|)$')
+  return $response -eq 'y'
+}
+
+function Read-No($prompt) {
+  if (Read-N($prompt)) {
+    return "Yes"
+  }
+  else {
+    return "No"
+  }
+}
+
+function Get-TeamViewerInfo {
+  $possiblePaths = @(
+    "HKLM:\SOFTWARE\TeamViewer",
+    "HKLM:\SOFTWARE\Wow6432Node\TeamViewer"
+  )
+
+  $TeamViewerInfo = $null
+  foreach ($path in $possiblePaths) {
+    if (Test-Path $path) {
+      $TeamViewerInfo = Get-CommandStatus -Command { Get-ItemProperty -Path $path } -Message "TeamViewer info from: $path"
+    }
+  }
+  return $TeamViewerInfo
+}
+
+function Add-RocksaltUser {
+  if ($AuditMode -ne "UNATTEND" -and (Read-Y "Create local Rocksalt user?")) {
+    $password = Read-Host "Enter password" -AsSecureString
+    New-LocalUser -Name "Rocksalt" -Password $password -FullName "Rocksalt" -Description "Rocksalt" | Out-Null
+    Add-LocalGroupMember -Group "Administrators" -Member "Rocksalt" | Out-Null
+    Write-Host "Rocksalt user created"
+    return "Yes"
+  }
+  return "No"
+}
+
+
+&lt;# INITIAL SETUP #&gt;
+
+$warnings = @()
+
+# Ensure directory exists
+if (-not (Test-Path -Path $rocksaltPath)) {
+  New-Item -ItemType Directory -Path $rocksaltPath | Out-Null
+  Write-Host "Output directory created: $rocksaltPath"
+}
+else {
+  Write-Host "Output directory already exists: $rocksaltPath"
+}
+
+# Run various 'Get' functions and save to local variables
+# (e.g. so that we only have to call Get-ComputerInfo once - it is a very slow function!)
+Write-Host "`n=== Getting system information ===`n" -ForegroundColor DarkYellow
+
+$ComputerName = $env:COMPUTERNAME
+$ComputerInfo = Get-CommandStatus -Command { Get-ComputerInfo } -Message 'computer info'
+$RamInfo = Get-CommandStatus -Command { Get-WmiObject -Class Win32_PhysicalMemory } -Message 'RAM'
+$Admins = Get-CommandStatus -Command { Get-LocalGroupMember -Group "Administrators" | Select-Object -ExpandProperty Name } -Message 'admins'
+$Users = Get-CommandStatus -Command { Get-LocalGroupMember -Group "Users" | Where-Object {
+  $Admins -notcontains $_.Name -and
+  $_.Name -notmatch "^NT AUTHORITY" -and
+  $_.Name -notmatch "^BUILTIN"
+} | Select-Object -ExpandProperty Name } -Message 'users'
+$TeamViewerInfo = Get-TeamViewerInfo
+$bitlocker = Get-CommandStatus -Command { Get-BitLockerVolume -MountPoint "C:" } -Message 'BitLocker'
+$PhysicalDisks = Get-CommandStatus -Command { Get-PhysicalDisk } -Message 'disks'
+$InstalledSoftware = Get-CommandStatus -Command { Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*, HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* } -Message 'software'
+$HardwareReadiness = Get-CommandStatus -Command { Invoke-Expression $hardwareReadinessScript 2&gt;&amp;1 | Out-String | ConvertFrom-Json } -Message 'hardware readiness'
+
+
+&lt;# AUDIT INFORMATION #&gt;
+
+$date = Get-Date -Format "yyyy-MM-dd"
+$manufacturer = $ComputerInfo.CsManufacturer
+$model = $ComputerInfo.CsModel
+$type = if ($ComputerInfo.CsPCSystemType -eq 2) { "Laptop" } else { "Desktop" }
+$serialNumber = $ComputerInfo.BiosSeralNumber
+$os = $ComputerInfo.OSName
+$domainName = $ComputerInfo.CsDomain
+$processor = $ComputerInfo.CsProcessors.Name -join ', '
+$ram = "$([math]::Round($ComputerInfo.CsTotalPhysicalMemory / 1GB))GB"
+try {
+  $ramType = Convert-RamMemoryType -MemoryTypeDecimal ($RamInfo[0].SMBIOSMemoryType)
+}
+catch {
+  $ramType = "Unknown"
+}
+$disk1Size = "$([math]::Round($PhysicalDisks[0].Size / 1GB))GB"
+$disk1Type = "$($PhysicalDisks[0].MediaType) $($PhysicalDisks[0].BusType)"
+if ($PhysicalDisks.Count -gt 1) {
+  $disk2Size = "$([math]::Round($PhysicalDisks[1].Size / 1GB))GB"
+  $disk2Type = "$($PhysicalDisks[1].MediaType) $($PhysicalDisks[1].BusType)"
+}
+else {
+  $disk2Size = "N/A"
+  $disk2Type = "N/A"
+}
+$teamViewer = $TeamViewerInfo.ClientID
+$chromeVersion = ($InstalledSoftware | Where-Object { $_.DisplayName -eq "Google Chrome" }).DisplayVersion
+$firefoxVersion = ($InstalledSoftware | Where-Object { $_.DisplayName -eq "Mozilla Firefox" }).DisplayVersion
+$edgeVersion = ($InstalledSoftware | Where-Object { $_.DisplayName -eq "Microsoft Edge" }).DisplayVersion
+
+if ($physicalDisks.Count -gt 2) {
+  Write-Host "Warning: More than 2 disks detected" -ForegroundColor Yellow
+  $warnings += "More than 2 disks detected"
+}
+
+
+&lt;# BRUTE FORCE PROTECTION #&gt;
+
+Write-Host "`n=== Running brute force commands ===`n" -ForegroundColor DarkYellow
 net accounts /lockoutthreshold:10
 net accounts /lockoutwindow:5
 net accounts /lockoutduration:30
 
-# Get audit information
-$auditer = Read-Host "RS (initials)"
-$date = Get-Date -Format "yyyy-MM-dd"
-$done = "Part"
-$users = Read-Host "Users"
-$gi = Read-Host "GI (numbers)"
-$pcName = $env:COMPUTERNAME
-$manufacturer = (Get-WmiObject -Class Win32_ComputerSystem).Manufacturer
-$model = (Get-WmiObject -Class Win32_ComputerSystem).Model
-$type = if ((Get-WmiObject -Class Win32_ComputerSystem).PCSystemType -eq 2) {
-  "Laptop"
-} else {
-  "Desktop"
+
+&lt;# TEAMVIEWER #&gt;
+
+if (-not $TeamViewerInfo) {
+  Write-Host "`n=== Checking Teamviewer ===`n" -ForegroundColor DarkYellow
+  Write-Host "TeamViewer not installed" -ForegroundColor Red
+  if ($AuditMode -eq "UNATTEND" -or (Read-Y "Install TeamViewer?")) {
+    $teamviewerInstaller = Join-Path -Path $rocksaltPath -ChildPath "TeamViewer_Host_Setup.exe"
+    # Download TeamViewer
+    Invoke-WebRequest -Uri "https://rocksalt.cc/tv" -OutFile $teamviewerInstaller
+    if ($?) {
+      Write-Host "TeamViewer installer downloaded to $teamviewerInstaller"
+
+      # Install TeamViewer silently
+      Start-Process $teamviewerInstaller -ArgumentList "/S", "/ACCEPTEULA=1" -WindowStyle Hidden -Wait
+
+      if ($?) {
+        Write-Host "TeamViewer installed successfully"
+        $TeamViewerInfo = Get-TeamViewerInfo
+      }
+      else {
+        Write-Host "Failed to install TeamViewer" -ForegroundColor Red
+      }
+    }
+    else {
+      Write-Host "Failed to download TeamViewer installer" -ForegroundColor Red
+    }
+  }
 }
-$serialNumber = (Get-WmiObject -Class Win32_BIOS).SerialNumber
-$os = (Get-WmiObject -Class Win32_OperatingSystem).Caption
-$win11Comp = if ($os -match "11") { "Yes" } else { "No" }
-$updates = if ((Read-Host "Updates (y/N)") -eq "y") { "Yes" } else { "No" }
-$drivers = if ((Read-Host "Drivers (y/N)") -eq "y") { "Yes" } else { "No" }
-$antiVirus = if ((Read-Host "Antivirus (y/N)") -eq "y") { "Yes" } else { "No" }
-$rocksaltExists = "Yes"
-$clientAdmin = Read-Host "Client Admin"
-$domainName = (Get-WmiObject -Class Win32_ComputerSystem).Domain
-$createUser = Read-Host "Create standard user? (Y/n)"
-if ($createUser -eq "Y" -or $createUser -eq "") {
-    # Prompt for the username and password
-    $username = Read-Host "Username:"
-    $password = Read-Host "Password:" -AsSecureString
 
-    # Create the new user
-    New-LocalUser -Name $username -Password $password -FullName $username
+
+&lt;# ROCKSALT USER #&gt;
+
+Write-Host "`n=== Checking for Rocksalt User ===`n" -ForegroundColor DarkYellow
+
+if ($Admins -contains "$computerName\Rocksalt") {
+  Write-Host "Local Rocksalt user exits and is administrator"
+  $rocksaltExists = "Yes"
 }
-$processor = (Get-WmiObject -Class Win32_Processor).Name
-$ram = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-# $ramType = Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object @{Name="MemoryType"; Expression={if ($memoryType[$_.MemoryType]) {$memoryType[$_.MemoryType]} else {"-"}}}
-$diskSize = [math]::Round((Get-WmiObject -Class Win32_LogicalDisk -Filter "DeviceID='C:'").Size / 1GB)
-$diskType = Get-PhysicalDisk | Select-Object -ExpandProperty MediaType
-$bitlocker = Read-Host "Bitlocker"
-$teamviewer = Read-Host "Teamviewer ID"
-$bruteForce = "Yes"
-$notes = Read-Host "Notes"
+elseif ($Admins -match '\\Rocksalt$') {
+  Write-Host "Warning: Rocksalt is an administrator, but it's a domain account" -ForegroundColor Yellow
 
-# Prepare tab-separated line
-$line = "$auditer`t$date`t$done`t$users`tGI$gi`t$pcName`t$manufacturer`t$model`t$type`t$serialNumber`t$os`t$win11Comp`t$updates`t$drivers`t$antiVirus`t$rocksaltExists`t$clientAdmin`t$userName`t$domainName`t$processor`t$ram`t$ramType`t$diskSize`t$diskType`t`t`t$bitlocker`t$teamviewer`t$bruteForce`t$notes"
+  $rocksaltExists = Add-RocksaltUser
+}
+elseif (Get-LocalUser -Name "Rocksalt" -ErrorAction SilentlyContinue) {
+  Write-Host "Local Rocksalt user is not administrator" -ForegroundColor Red
 
-# Append to the output file
-$line | Out-File -Append -FilePath $outputFile
+  if ($AuditMode -eq "UNATTEND" -or (Read-Y "Make Rocksalt admin?")) {
+    Add-LocalGroupMember -Group "Administrators" -Member "Rocksalt"
+    Write "Local Rocksalt user added to Administrators group"
+    $rocksaltExists = "Yes"
+  }
+  else {
+    $rocksaltExists = "No"
+  }
+}
+else {
+  Write-Host "Local Rocksalt user does not exist" -ForegroundColor Red
 
-Write-Host "System information has been appended to $outputFile"
+  $rocksaltExists = Add-RocksaltUser
+}
 
-# Wait for user input before exiting
-Read-Host -Prompt "Press Enter to exit"
+
+&lt;# WINDOWS 11 COMPATIBLE #&gt;
+
+Write-Host "`n=== Checking Windows 11 compatibility ===`n" -ForegroundColor DarkYellow
+
+$onWin11 = $os -match "11"
+
+if ($HardwareReadiness.returnResult -eq "CAPABLE") {
+  Write-Host "Windows 11 compatible" -ForegroundColor Green
+  $win11Comp = "Yes"
+
+  if (-not $onWin11) {
+    Write-Host "Windows 11 is not installed please update" -ForegroundColor Red
+  }
+}
+else {
+  Write-Host "Not Windows 11 compatible" -ForegroundColor Red
+  $win11Comp = "No"
+  Write-Host "Reason: $($HardwareReadiness.returnReason)" -ForegroundColor Red
+
+  if ($onWin11) {
+    Write-Host "Warning: Windows 11 is installed but not compatible" -ForegroundColor Yellow
+    $warnings += "Windows 11 is installed but not compatible"
+  }
+}
+
+
+&lt;# AUDITER INPUT #&gt;
+
+if ($AuditMode -ne "UNATTEND") {
+  Write-Host "`n=== Audit information ===`n" -ForegroundColor DarkYellow
+
+  $auditer = Read-Host "RS (initials)"
+  $name = Read-Host "Name"
+  $gi = "GI$((Read-Host "GI") -replace '\D', '')"
+  $updates = Read-No "Updates"
+  $drivers = Read-No "Drivers"
+  $antiVirus = Read-No "Antivirus"
+  Write-Host "Admin Accounts: $Admins"
+  $clientAdmin = Read-Host "Client Admin"
+  Write-Host "User Accounts: $Users"
+  $userName = Read-Host "Username (Account they use)"
+
+  Write-Host "`nChrome version: $chromeVersion`nFirefox version: $firefoxVersion`nEdge version: $edgeVersion"
+
+  $InstalledSoftware |
+  Where-Object { $_.DisplayName -ne $null } |
+  Sort-Object DisplayName, DisplayVersion |
+  Format-Table @{Label = 'Name'; Expression = { $_.DisplayName } },
+  @{Label = 'Version'; Expression = { $_.DisplayVersion } },
+  @{Label = 'Publisher'; Expression = { $_.Publisher } },
+  @{Label = 'Install Date'; Expression = { $_.InstallDate } } -AutoSize
+  $otherBrowsers = Read-Host "Other browsers"
+  $softwareValid = Read-No "Software valid?"
+}
+
+
+&lt;# BITLOCKER #&gt;
+
+Write-Host "`n=== Checking Bitlocker ===`n" -ForegroundColor DarkYellow
+
+$bitlockerFilenames = @()
+
+if ($bitlocker.ProtectionStatus -eq 1) {
+  Write-Host "Bitlocker is enabled" -ForegroundColor Green
+  $bitlockerOn = "Yes"
+
+  $protector = $bitlocker.KeyProtector | Where-Object { $_.KeyProtectorType -eq 'RecoveryPassword' }
+
+  $bitlockerFilenames = @()
+  if ($AuditMode -ne "UNATTEND") {
+    $bitlockerFilenames += "$gi $name $ComputerName Bitlocker $($protector.KeyProtectorId).txt"
+  }
+  $bitlockerFilenames += "$ComputerName Bitlocker $($protector.KeyProtectorId).txt"
+
+  $bitlockerInfo = "$($protector.KeyProtectorId)`n$($protector.RecoveryPassword)"
+}
+else {
+  Write-Host "Bitlocker is not enabled" -ForegroundColor Red
+  $bitlockerOn = "No"
+}
+
+
+&lt;# OUTPUT #&gt;
+
+Write-Host "`n=== Output ===`n" -ForegroundColor DarkYellow
+
+if ($AuditMode -ne "UNATTEND") {
+  $notes = Read-Host "Notes"
+}
+
+if ($warnings.Count -gt 0 -and ($AuditMode -eq "UNATTEND" -or (Read-Y "Would you like to add warnings to notes?"))) {
+  if ($notes -ne "") {
+    $notes += "; "
+  }
+  $notes += "Warnings: $($warnings -join ', ')"
+}
+
+$lineTable = [PSCustomObject]@{
+  Auditer         = $auditer
+  Date            = $date
+  Done            = "Part"
+  Users           = $name
+  GI              = $gi
+  PCName          = $ComputerName
+  Manufacturer    = $manufacturer
+  Model           = $model
+  Type            = $type
+  SerialNumber    = $serialNumber
+  OS              = $os
+  Win11Compatible = $win11Comp
+  Updates         = $updates
+  Drivers         = $drivers
+  AntiVirus       = $antiVirus
+  RocksaltExists  = $rocksaltExists
+  ClientAdmin     = $clientAdmin
+  UserName        = $userName
+  DomainName      = $domainName
+  Processor       = $processor
+  RAM             = $ram
+  RAMType         = $ramType
+  DiskSize        = $disk1Size
+  DiskType        = $disk1Type
+  Disk2Size       = $disk2Size
+  Disk2Type       = $disk2Type
+  Bitlocker       = $bitlockerOn
+  TeamViewer      = $teamviewer
+  BruteForce      = "Yes"
+  ChromeVersion   = $chromeVersion
+  FirefoxVersion  = $firefoxVersion
+  EdgeVersion     = $edgeVersion
+  OtherBrowsers   = $otherBrowsers
+  SoftwareValid   = $softwareValid
+  Notes           = $notes
+}
+
+$line = ($lineTable.PSObject.Properties | ForEach-Object { $_.Value }) -join "`t"
+
+Write-Host "`nTab-separated Line:`n" -ForegroundColor DarkYellow
+Write-Host $line
+
+Write-Host "`n=== Vertical Table ===`n" -ForegroundColor DarkYellow
+$lineTable | Format-List
+
+
+&lt;# SAVE OUTPUT #&gt;
+
+Write-Host "`n=== Saving output ===`n" -ForegroundColor DarkYellow
+
+foreach ($path in $outPaths) {
+  $auditFile = Join-Path $path "Audit.txt"
+  $line | Out-File -Append -FilePath $auditFile
+  Write-Host "Audit information has been appended to $auditFile"
+
+  foreach ($file in $bitlockerFilenames) {
+    $bitlockerFile = Join-Path $path $file
+    $bitlockerInfo | Out-File -FilePath $bitlockerFile
+    if (Test-Path $bitlockerFile) {
+      Write-Host "Bitlocker saved to $bitlockerFile`n"
+      break
+    }
+    else {
+      Write-Host "Failed to save Bitlocker info to $bitlockerFile`n" -ForegroundColor Red
+    }
+  }
+}
+
+if ($AuditMode -ne "UNATTEND") {
+  Read-Host -Prompt "Press Enter to exit"
+}
 		</File>
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
 $scripts = @(
-	{
-		reg.exe add "HKLM\SYSTEM\Setup\MoSetup" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f;
-	};
-	{
-		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v BypassNRO /t REG_DWORD /d 1 /f;
-	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\RemovePackages.ps1' -Raw | Invoke-Expression;
 	};
@@ -463,13 +1349,13 @@ $scripts = @(
 		Register-ScheduledTask -TaskName 'UnlockStartLayout' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UnlockStartLayout.xml' -Raw );
 	};
 	{
-		Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;
-	};
-	{
 		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f;
 	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\SetStartPins.ps1' -Raw | Invoke-Expression;
+	};
+	{
+		reg.exe add "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
 	};
 );
 
@@ -540,13 +1426,10 @@ $scripts = @(
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d 0 /f;
 	};
 	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\ShowAllTrayIcons.ps1' -Raw | Invoke-Expression;
-	};
-	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;
 	};
 	{
-		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f;
+		reg.exe add "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle Normal -NoProfile -Command \""Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UserOnce.ps1' -Raw | Invoke-Expression;\""" /f;
