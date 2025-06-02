@@ -4,14 +4,16 @@
             "image": "/ISO/Rocksalt_Win10_22H2_English_x64.iso",
             "template":[
                 "/script/manual_wipe.xml",
-                "/script/auto_wipe.xml"
+                "/script/auto_wipe.xml",
+                "/script/simple.xml"
             ]
         },
         {
             "image": "/ISO/Rocksalt_Win11_24H2_English_x64.iso",
             "template":[
                 "/script/manual_wipe.xml",
-                "/script/auto_wipe.xml"
+                "/script/auto_wipe.xml",
+                "/script/simple.xml"
             ]
         }
     ],
