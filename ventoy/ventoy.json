@@ -17,7 +17,7 @@
             ]
         },
         {
-            "image": "/ISO/kali-linux-2025.1c-live-amd64.iso",
+            "image": "/ISO/kali-linux-2026.1-live-amd64.iso",
             "backend":[
                 "/ventoy/kali_persistence.dat"
             ]
