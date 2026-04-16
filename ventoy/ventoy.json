@@ -1,15 +1,7 @@
 {
     "auto_install":[
         {
-            "image": "/ISO/Rocksalt_Win10_22H2_English_x64.iso",
-            "template":[
-                "/script/manual_wipe.xml",
-                "/script/auto_wipe.xml",
-                "/script/simple.xml"
-            ]
-        },
-        {
-            "image": "/ISO/Rocksalt_Win11_24H2_English_x64.iso",
+            "image": "/ISO/Win11_25H2_EnglishInternational_x64_v2.iso",
             "template":[
                 "/script/manual_wipe.xml",
                 "/script/auto_wipe.xml",
@@ -19,7 +11,7 @@
     ],
     "persistence":[
         {
-            "image": "/ISO/linuxmint-22-cinnamon-64bit.iso",
+            "image": "/ISO/linuxmint-22.3-cinnamon-64bit.iso",
             "backend":[
                 "/ventoy/mint_persistence.dat"
             ]
